@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import SideBar from "./components/SideBar";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -10,9 +12,14 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
-      <h1>Page Count: {count}</h1>
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <Routes>
+          <Route path="/" element={<SideBar/>}>
+          </Route>
+        </Routes>
+      </div>
+    </BrowserRouter>
   );
 }
 
