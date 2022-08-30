@@ -1,6 +1,37 @@
-import React from "react";
+import React, {useNavigate, useState} from "react";
 
 function SignUp() {
+    const [fullname, setFullname] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [passwordConfirmation, setPasswordConfirmation] = useState("");
+  
+    // let navigate = useNavigate()
+  
+    // function handleSubmit(e){
+    //   e.preventDefault()
+    //   fetch('/signup', {
+    //     method: "POST",
+    //     headers:{"Content-Type": "Application/json"},
+    //     body:JSON.stringify({
+    //       fullname,
+    //       email,
+    //       password,
+    //       password_confirmation: passwordConfirmation,
+    //   }),
+      
+    //   })
+    //   .then(res => {
+    //     if(res.ok) {
+    //       res.json().then(user => {
+    //         setUser({id: user.id, username: user.username})
+    //         navigate('/')
+    //       })
+
+    //       console.log(res)
+    //     }
+    //   })
+    // }
     return (
 
         
@@ -18,31 +49,55 @@ function SignUp() {
         <h1 class="text-xl font-bold">Suite Management Signup</h1>
         <h1 class="text-xl md:text-2xl font-bold leading-tight mt-12">Sign Up</h1>
   
-        <form class="mt-6" action="#" method="POST">
+        <form class="mt-6" action="#" >
         <div class="mt-4">
-            <label class="block text-gray-700">First Name</label>
-            <input type="password" name="" id="" placeholder="Enter First Name" minlength="6" class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500
-                  focus:bg-white focus:outline-none" required/>
-          </div>
-          <div class="mt-4">
-            <label class="block text-gray-700">Last Name</label>
-            <input type="password" name="" id="" placeholder="Enter Last Name" minlength="6" class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500
-                  focus:bg-white focus:outline-none" required/>
+            <label class="block text-gray-700">Full Name</label>
+            <input 
+            type="fullname" 
+            name="fullname" 
+            id="full-name" 
+            placeholder="Enter Full Name" 
+            class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500focus:bg-white focus:outline-none" required
+            value={fullname}
+            onChange={(e) => setFullname(e.target.value)}/>
           </div>
           <div>
             <label class="block text-gray-700">Email Address</label>
-            <input type="email" name="" id="" placeholder="Enter Email Address" class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none" autofocus autocomplete required/>
+            <input 
+            type="email" 
+            name="email" 
+            id="email" 
+            placeholder="Enter Email Address" 
+            class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none" autofocus autocomplete required
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            />
           </div>
   
           <div class="mt-4">
             <label class="block text-gray-700">Password</label>
-            <input type="password" name="" id="" placeholder="Enter Password" minlength="6" class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500
-                  focus:bg-white focus:outline-none" required/>
+            <input 
+            type="password" 
+            name="" 
+            id="" 
+            placeholder="Enter Password" 
+            minlength="6" 
+            class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none" required
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}     />
           </div>
           <div class="mt-4">
             <label class="block text-gray-700">Confirm Password</label>
-            <input type="password" name="" id="" placeholder="Enter Password" minlength="6" class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500
-                  focus:bg-white focus:outline-none" required/>
+            <input 
+            type="password"
+            name="" 
+            id="" 
+            placeholder="Enter Password" 
+            minlength="6" 
+            class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none" required 
+            value={passwordConfirmation}
+            onChange={(e) => setPasswordConfirmation(e.target.value)}
+            />
           </div>
   
           <div class="text-right mt-2">
