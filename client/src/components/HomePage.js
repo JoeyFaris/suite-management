@@ -2,7 +2,7 @@ import React from "react";
 
 function HomePage() {
     return (
-        <div className="grid justify-center">Hello</div>
+        <div className="flex justify-center">Hello</div>
     )
     
 }
