@@ -8,6 +8,7 @@ import HomePage from "./HomePage"
 
 
 export default function SideBar() {
+   
     const menus = [
         {name: "Home", link:'/', icon: AiOutlineHome},
         {name: "Payments and Balances", link:'/', icon: BsCreditCard},
