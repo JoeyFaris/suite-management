@@ -4,6 +4,7 @@ import { AiOutlineHome, AiOutlineFile} from 'react-icons/ai'
 import {BsCreditCard, BsHeadset} from 'react-icons/bs'
 import { BiWrench, BiLogOut } from 'react-icons/bi'
 import {Link} from 'react-router-dom'
+import HomePage from "./HomePage"
 
 
 export default function SideBar() {
@@ -16,7 +17,7 @@ export default function SideBar() {
     ]
     const [open, setOpen] = useState(true)
     return (
-        <section className="flex gap=6">
+        <section className="Z-[999] flex gap=6">
             <div className={`bg-[#0e0e0e] min-h-screen ${open ? 'w-72' : 'w-16'} duration-500 text-gray-100 px-4`}>
                 <div className="py-6 flex justify-end">
                     <HiMenuAlt2 
@@ -38,7 +39,7 @@ export default function SideBar() {
                     </Link>
                         ))
 }
-                <div> <Link to={'/'}  className='fixed items-bottom bottom-7 left-5 justify-center whitespace-pre duration-500'>
+                <div> <Link to={'/'}  className='fixed static items-bottom bottom-7 left-5 justify-center whitespace-pre duration-500'>
                         <div>{React.createElement(BiLogOut, {size: '20'})}</div>
                         <h2 
                         style={{
@@ -48,11 +49,6 @@ export default function SideBar() {
                     </Link>
                 </div>
                 </div>
-                
-                
-            </div>
-            <div className="m-3 text-xl text-gray-900 font-semibold">
-                React Tailwind
             </div>
             </section>
     )
