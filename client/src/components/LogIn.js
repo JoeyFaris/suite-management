@@ -40,7 +40,15 @@ function LogIn() {
   
         <hr class="my-6 border-gray-300 w-full"/>
   
-      
+        <button type="button" class="w-full block bg-white hover:bg-gray-100 focus:bg-gray-100 text-gray-900 font-semibold rounded-lg px-4 py-3 border border-gray-300">
+          <div class="flex items-center justify-center">
+           <span class="ml-4">
+              Log in
+              with
+              Google
+              </span>
+          </div>
+        </button>
   
         <p class="mt-8">
           Need an account? 
