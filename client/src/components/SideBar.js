@@ -11,7 +11,7 @@ export default function SideBar({currentUser}) {
    
     const menus = [
         {name: "Home", link:'/', icon: AiOutlineHome},
-        {name: "Payments and Balances", link:'/', icon: BsCreditCard},
+        {name: "Payments and Balances", link:'/paymentsandbalances', icon: BsCreditCard},
         {name: "My Lease", link:'/', icon: AiOutlineFile},
         {name: "Maintenance Request", link:'/', icon: BiWrench},
         {name: "Contact Us", link:'/', icon: BsHeadset},
