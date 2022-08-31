@@ -6,6 +6,7 @@ function LogIn({updateUser}) {
 
     let navigate = useNavigate()
     const [username, setUsername] = useState("")
+    const [errors, setErrors] = useState([])
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
 
@@ -23,14 +24,19 @@ function LogIn({updateUser}) {
           headers:{"Content-Type": "Application/json"},
           body:JSON.stringify(userObj)
         })
-        .then((r) => r.json())
-        .then((r) => {
-            updateUser(r.user)
-            setUsername('')
-            setPassword('')
-            navigate('/')
-
-    })
+        .then(res => {
+            if(res.ok) {
+              res.json().then(user => {
+                updateUser({id: user.id, username: user.username})
+                navigate(`/`)
+                // will add redirect
+              })
+            } else {
+              res.json().then(json => setErrors(Object.entries(json.errors)))
+            }
+          })
+        
+   
 }
     return (
 
@@ -50,6 +56,19 @@ function LogIn({updateUser}) {
         <h1 class="text-xl md:text-2xl font-bold leading-tight mt-12">Log in to your account</h1>
   
         <form onSubmit={handleSubmit}class="mt-6" action="#" method="POST">
+        {errors ? errors.map((e) => <div>{e}</div>) : null}
+        <div>
+            <label class="block text-gray-700">Full Name</label>
+            <input 
+            type="username" 
+            name="username" 
+            id="username" 
+            placeholder="Enter Full Name" 
+            class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none" autofocus autocomplete required
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            />
+          </div>
           <div>
             <label class="block text-gray-700">Email Address</label>
             <input 

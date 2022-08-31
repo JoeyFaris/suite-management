@@ -54,9 +54,9 @@ function SignUp({updateUser}) {
         <div class="mt-4">
             <label class="block text-gray-700">Full Name</label>
             <input 
-            type="fullname" 
-            name="fullname" 
-            id="full-name" 
+            type="username" 
+            name="username" 
+            id="username" 
             placeholder="Enter Full Name" 
             class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500focus:bg-white focus:outline-none" required
             value={username}
@@ -89,8 +89,8 @@ function SignUp({updateUser}) {
           <div class="mt-4">
             <label class="block text-gray-700">Confirm Password</label>
             <input 
-            type="password confirmation"
-            name="password confirmation" 
+            type="password"
+            name="password" 
             id="password_confirmation" 
             placeholder="Enter Password" 
             class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none" required 

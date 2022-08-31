@@ -7,7 +7,7 @@ import {Link} from 'react-router-dom'
 import HomePage from "./HomePage"
 
 
-export default function SideBar() {
+export default function SideBar({currentUser}) {
    
     const menus = [
         {name: "Home", link:'/', icon: AiOutlineHome},
@@ -40,15 +40,30 @@ export default function SideBar() {
                     </Link>
                         ))
 }
-                <div> <Link to={'/login'}  className='fixed static items-bottom bottom-7 left-5 justify-center whitespace-pre duration-500'>
+                {currentUser ? 
+                <div> 
+                    <Link to={'/login'}  className='fixed static items-bottom bottom-7 left-5 justify-center whitespace-pre duration-500'>
                         <div>{React.createElement(BiLogOut, {size: '20'})}</div> 
-                        <h2 
+                       <h2 
                         style={{
                             transitionDelay: `${0 + 3}00ms`,
-                        }}
+                        }} 
+                        className={`whitespace-pre duration-500 ${!open && `opacity-0 translate-x-28 overflow-hidden`}`}>Logout</h2>
+                    </Link>
+                </div>
+                :  
+                <div> 
+                    <Link to={'/login'}  className='fixed static items-bottom bottom-7 left-5 justify-center whitespace-pre duration-500'>
+                        <div>{React.createElement(BiLogOut, {size: '20'})}</div> 
+                       <h2 
+                        style={{
+                            transitionDelay: `${0 + 3}00ms`,
+                        }} 
                         className={`whitespace-pre duration-500 ${!open && `opacity-0 translate-x-28 overflow-hidden`}`}>Login</h2>
                     </Link>
                 </div>
+                }
+            
                 </div>
             </div>
             </section>
