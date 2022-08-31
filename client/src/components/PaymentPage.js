@@ -10,39 +10,16 @@ function PaymentPage() {
         setCountry(e.target.textContent);
     };
     return (
-//         <div class="flex justify-center items-center min-h-screen bg-gray-100">
-//             <div class="h-auto w-80 bg-white p-3 rounded-lg m-10"> 
-//             <div class="text-xl font-semibold">Current due</div>
-//             <div>Hello</div>
-            
-//             </div> {' '}
+//         
 
-
-
-
-
-//     <div class="h-auto w-80 bg-white p-3 rounded-lg">
-//     <p class="text-xl font-semibold">Payment Details</p>
-//         <p class="text-xl font-semibold">Payment Details</p>
-//         <div class="input_text mt-6 relative"> <input type="text" class="h-12 pl-7 outline-none px-2 focus:border-blue-900 transition-all w-full border-b " placeholder="John Row" /> <span class="absolute left-0 text-sm -top-4">Cardholder Name</span> <i class="absolute left-2 top-4 text-gray-400 fa fa-user"></i> </div>
-//         <div class="input_text mt-8 relative"> <input type="text" class="h-12 pl-7 outline-none px-2 focus:border-blue-900 transition-all w-full border-b " placeholder="0000 0000 0000 0000" data-slots="0" data-accept="\d" size="19" /> <span class="absolute left-0 text-sm -top-4">Card Number</span> <i class="absolute left-2 top-[14px] text-gray-400 text-sm fa fa-credit-card"></i> </div>
-//         <div class="mt-8 flex gap-5 ">
-//             <div class="input_text relative w-full"> <input type="text" class="h-12 pl-7 outline-none px-2 focus:border-blue-900 transition-all w-full border-b " placeholder="mm/yyyy" data-slots="my" /> <span class="absolute left-0 text-sm -top-4">Expiry</span> <i class="absolute left-2 top-4 text-gray-400 fa fa-calendar-o"></i> </div>
-//             <div class="input_text relative w-full"> <input type="text" class="h-12 pl-7 outline-none px-2 focus:border-blue-900 transition-all w-full border-b " placeholder="000" data-slots="0" data-accept="\d" size="3" /> <span class="absolute left-0 text-sm -top-4">CVV</span> <i class="absolute left-2 top-4 text-gray-400 fa fa-lock"></i> </div>
-//         </div>
-//         <p class="text-lg text-center mt-4 text-gray-600 font-semibold">Payment amount:$12.98</p>
-//         <div class="flex justify-center mt-4"> <button class="outline-none pay h-12 bg-orange-600 text-white mb-3 hover:bg-orange-700 rounded-lg w-1/2 cursor-pointer transition-all">Pay</button> </div>
-//     </div>
-// </div>
-
-        <div className="flex justify-center items-center">
+        <div className="flex ml-40 justify-center items-center">
             <div className="py-16 px-4 md:px-6 2xl:px-0 flex justify-center items-center 2xl:mx-auto 2xl:container">
-                <div className="flex flex-col justify-start items-start w-full space-y-9">
+                <div className="flex flex-col justify-start items-start w-1/2 space-y-9">
                     <div className="flex justify-start flex-col items-start space-y-2">
                         <button className="flex flex-row items-center text-gray-600 hover:text-gray-500 space-x-1">
                          
                                
-                            <p className="text-sm leading-none">Back</p>
+                            <p href='/' className="text-sm leading-none">Back</p>
                         </button>
                         <p className="text-3xl lg:text-4xl font-semibold leading-7 lg:leading-9 text-gray-800">Make Payment</p>
                         <p className="text-base leading-normal sm:leading-4 text-gray-600">
@@ -50,16 +27,16 @@ function PaymentPage() {
                         </p>
                     </div>
 
-                    <div className="flex flex-col xl:flex-row justify-center xl:justify-between space-y-6 xl:space-y-0 xl:space-x-6 w-full">
+                    
                         <div className="xl:w-3/5 flex flex-col sm:flex-row xl:flex-col justify-center items-center bg-gray-100 py-7 sm:py-0 xl:py-10 px-10 xl:w-full">
                             <div className="flex flex-col justify-start items-start w-full space-y-4">
-                                <p className="text-xl md:text-2xl leading-normal text-gray-800">Logitech K251</p>
-                                <p className="text-base font-semibold leading-none text-gray-600">$520.00</p>
+                                <p className="justify-center items-center text-xl md:text-2xl leading-normal text-gray-800">Current Balance for the month of: September 2022</p>
+                                <p className="text-base font-semibold leading-none text-gray-600">$1,250.00</p>
                             </div>
                             <div className="mt-6 sm:mt-0 xl:my-10 xl:px-20 w-52 sm:w-96 xl:w-auto">
-                                <img src="https://i.ibb.co/0GFzTP4/Rectangle-131.png" alt="headphones" />
+                               
                             </div>
-                        </div>
+                        
 
                         <div className="p-8 bg-gray-100 flex flex-col lg:w-full xl:w-3/5">
                             <button className="border border-transparent hover:border-gray-300 bg-gray-900 hover:bg-white text-white hover:text-gray-900 flex flex-row justify-center items-center space-x-2 py-4 rounded w-full">
@@ -127,7 +104,7 @@ function PaymentPage() {
 
                             <button className="mt-8 border border-transparent hover:border-gray-300 bg-gray-900 hover:bg-white text-white hover:text-gray-900 flex justify-center items-center py-4 rounded w-full">
                                 <div>
-                                    <p className="text-base leading-4">Pay $54652</p>
+                                    <p className="text-base leading-4">Pay Outstanding Balance</p>
                                 </div>
                             </button>
                         </div>
