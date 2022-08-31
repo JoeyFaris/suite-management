@@ -52,7 +52,7 @@ function LogIn({updateUser}) {
   
       <div class="w-full h-100">
   
-        <h1 class="text-xl font-bold">Tailwind Login</h1>
+        <h1 class="text-xl font-bold">Suite Management Login</h1>
         <h1 class="text-xl md:text-2xl font-bold leading-tight mt-12">Log in to your account</h1>
   
         <form onSubmit={handleSubmit}class="mt-6" action="#" method="POST">

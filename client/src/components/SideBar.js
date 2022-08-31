@@ -1,7 +1,7 @@
 import React, {useState} from "react"
 import { HiMenuAlt2 } from 'react-icons/hi'
 import { AiOutlineHome, AiOutlineFile} from 'react-icons/ai'
-import {BsCreditCard, BsHeadset} from 'react-icons/bs'
+import {BsCreditCard, BsHeadset, BsBuilding} from 'react-icons/bs'
 import { BiWrench, BiLogOut } from 'react-icons/bi'
 import {Link} from 'react-router-dom'
 import HomePage from "./HomePage"
@@ -20,14 +20,24 @@ export default function SideBar({currentUser}) {
     return (
         <section className="fixed top-0 flex gap=6">
             <div className={`bg-[#0e0e0e] min-h-screen ${open ? 'w-72' : 'w-16'} duration-500 text-gray-100 px-4`}>
-                <div className="py-6 flex justify-end">
+            <div className="py-6 flex justify-end">
                     <HiMenuAlt2 
                     size={26} 
                     className="cursor-pointer" 
                     onClick={() =>setOpen(!open)}
                     />
+                    
                 </div>
-                <div className="mt-5 flex flex-col gap-6 relative">
+                <div classname="ml-10">
+                <div>{React.createElement(BsBuilding, {size: '35'})}</div>
+                        <h3 
+                        style={{
+                            transitionDelay: `${0 + 3}00ms`,
+                        }}
+                                className={` text-xl pt-1 whitespace-pre duration-500 ${!open && `opacity-0 translate-x-28 overflow-hidden`}`}>Suite Management</h3>
+                                <h2 className={` ${open && 'hidden'}  absolute left-48 bg-white fot-semibold whitespace-pre text-gray-900 rounded-md drop-shadow-lg px-0 py-0 w-0 overflow-hidden group-hover:py-1 group-hover:left-14 group-hover:duration-300 group-hover:w-fit`}>Hello</h2>
+                                </div>
+                <div className="mt-10 flex flex-col gap-6 relative">
                     {menus?.map((menu, i) =>(
                     <Link to={menu?.link} key={i} className=" group flex items-center text-sm gap-3.5 font-medium p-2 hover:bg-gray-800 rounded-md">
                         <div>{React.createElement(menu?.icon, {size: '20'})}</div>

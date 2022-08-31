@@ -9,6 +9,13 @@ function PaymentPage() {
         setMenu(false);
         setCountry(e.target.textContent);
     };
+
+    let today = new Date();
+
+let date=today.getDate() + "-"+ parseInt(today.getMonth()+1) +"-"+today.getFullYear();
+
+console.log(date)
+
     return (
 //         
 
@@ -19,12 +26,10 @@ function PaymentPage() {
                         <button className="flex flex-row items-center text-gray-600 hover:text-gray-500 space-x-1">
                          
                                
-                            <p href='/' className="text-sm leading-none">Back</p>
+                            <p href='/' class="text-sm leading-none"></p>
                         </button>
                         <p className="text-3xl lg:text-4xl font-semibold leading-7 lg:leading-9 text-gray-800">Make Payment</p>
-                        <p className="text-base leading-normal sm:leading-4 text-gray-600">
-                            Rent for {}
-                        </p>
+                        
                     </div>
 
                     
