@@ -1,37 +1,38 @@
-import React, {useNavigate, useState} from "react";
+import React, {useState} from "react";
+import {useNavigate} from "react-router-dom"
 
-function SignUp() {
-    const [fullname, setFullname] = useState("");
+function SignUp({updateUser}) {
+    const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [passwordConfirmation, setPasswordConfirmation] = useState("");
   
-    // let navigate = useNavigate()
+    let navigate = useNavigate()
   
-    // function handleSubmit(e){
-    //   e.preventDefault()
-    //   fetch('/signup', {
-    //     method: "POST",
-    //     headers:{"Content-Type": "Application/json"},
-    //     body:JSON.stringify({
-    //       fullname,
-    //       email,
-    //       password,
-    //       password_confirmation: passwordConfirmation,
-    //   }),
+    function handleSubmit(e){
+      e.preventDefault()
+      fetch('/signup', {
+        method: "POST",
+        headers:{"Content-Type": "Application/json"},
+        body:JSON.stringify({
+          username,
+          email,
+          password,
+          password_confirmation: passwordConfirmation,
+      }),
       
-    //   })
-    //   .then(res => {
-    //     if(res.ok) {
-    //       res.json().then(user => {
-    //         setUser({id: user.id, username: user.username})
-    //         navigate('/')
-    //       })
+      })
+      .then(res => {
+        if(res.ok) {
+          res.json().then(user => {
+            updateUser({id: user.id, username: user.username})
+            navigate('/')
+          })
 
-    //       console.log(res)
-    //     }
-    //   })
-    // }
+          console.log(res)
+        }
+      })
+    }
     return (
 
         
@@ -49,7 +50,7 @@ function SignUp() {
         <h1 class="text-xl font-bold">Suite Management Signup</h1>
         <h1 class="text-xl md:text-2xl font-bold leading-tight mt-12">Sign Up</h1>
   
-        <form class="mt-6" action="#" >
+        <form onSubmit={handleSubmit} class="mt-6" action="#" >
         <div class="mt-4">
             <label class="block text-gray-700">Full Name</label>
             <input 
@@ -58,8 +59,8 @@ function SignUp() {
             id="full-name" 
             placeholder="Enter Full Name" 
             class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500focus:bg-white focus:outline-none" required
-            value={fullname}
-            onChange={(e) => setFullname(e.target.value)}/>
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}/>
           </div>
           <div>
             <label class="block text-gray-700">Email Address</label>
@@ -78,10 +79,9 @@ function SignUp() {
             <label class="block text-gray-700">Password</label>
             <input 
             type="password" 
-            name="" 
-            id="" 
+            name="password" 
+            id="password" 
             placeholder="Enter Password" 
-            minlength="6" 
             class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none" required
             value={password}
             onChange={(e) => setPassword(e.target.value)}     />
@@ -89,11 +89,10 @@ function SignUp() {
           <div class="mt-4">
             <label class="block text-gray-700">Confirm Password</label>
             <input 
-            type="password"
-            name="" 
-            id="" 
+            type="password confirmation"
+            name="password confirmation" 
+            id="password_confirmation" 
             placeholder="Enter Password" 
-            minlength="6" 
             class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none" required 
             value={passwordConfirmation}
             onChange={(e) => setPasswordConfirmation(e.target.value)}
@@ -113,9 +112,9 @@ function SignUp() {
      
   
         <p class="mt-8">
-          Need an account? 
-          <a href="#" class="text-blue-500 hover:text-blue-700 font-semibold">
-            Create an account
+          Already have an account? {' '}
+          <a href="/signup" class="text-blue-500 hover:text-blue-700 font-semibold">
+            Back to login
           </a>
         </p>
   

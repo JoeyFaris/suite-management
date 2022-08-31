@@ -7,15 +7,17 @@ import SignUp from "./components/SignUp";
 
 
 function App() {
+  const [currentUser, setCurrentUser] = useState(false)
+  const updateUser = (user) => setCurrentUser(user)
  
   return (
     <BrowserRouter>
-    <SideBar/>
+      <SideBar currentUser={currentUser} updateUser={updateUser}/>
         <Routes>
-          <Route path="/" element={<HomePage />} ></Route>
-          <Route path="/login" element={<LogIn />} ></Route>
-          <Route path='/signup' element={<SignUp/>}></Route>
-          
+
+          <Route path="/login" element={<LogIn updateUser={updateUser}/>} ></Route>
+          <Route path='/signup' element={<SignUp updateUser={updateUser}/>}></Route>
+          <Route path="/" element={<HomePage currentUser={currentUser}/>} ></Route>
         </Routes>
 
     </BrowserRouter>

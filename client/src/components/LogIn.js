@@ -1,6 +1,37 @@
-import React from "react";
+import React, {useState} from "react";
+import {useNavigate} from 'react-router-dom'
 
-function LogIn() {
+
+function LogIn({updateUser}) {
+
+    let navigate = useNavigate()
+    const [username, setUsername] = useState("")
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
+
+    function handleSubmit(e){
+        e.preventDefault();
+        const userObj = {
+            user: {
+            username: username,
+            email: email,
+            password: password
+            }
+        }
+        fetch('/login', {
+          method: "POST",
+          headers:{"Content-Type": "Application/json"},
+          body:JSON.stringify(userObj)
+        })
+        .then((r) => r.json())
+        .then((r) => {
+            updateUser(r.user)
+            setUsername('')
+            setPassword('')
+            navigate('/')
+
+    })
+}
     return (
 
         
@@ -18,16 +49,32 @@ function LogIn() {
         <h1 class="text-xl font-bold">Tailwind Login</h1>
         <h1 class="text-xl md:text-2xl font-bold leading-tight mt-12">Log in to your account</h1>
   
-        <form class="mt-6" action="#" method="POST">
+        <form onSubmit={handleSubmit}class="mt-6" action="#" method="POST">
           <div>
             <label class="block text-gray-700">Email Address</label>
-            <input type="email" name="" id="" placeholder="Enter Email Address" class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none" autofocus autocomplete required/>
+            <input 
+            type="email" 
+            name="email" 
+            id="email" 
+            placeholder="Enter Email Address" 
+            class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none" autofocus autocomplete required
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            />
           </div>
   
           <div class="mt-4">
             <label class="block text-gray-700">Password</label>
-            <input type="password" name="" id="" placeholder="Enter Password" minlength="6" class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500
-                  focus:bg-white focus:outline-none" required/>
+            <input 
+            type="password" 
+            name="" 
+            id="email" 
+            placeholder="Enter Password" 
+            minlength="6" 
+            class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none" required
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            />
           </div>
   
           <div class="text-right mt-2">
@@ -51,13 +98,13 @@ function LogIn() {
         </button>
   
         <p class="mt-8">
-          Need an account? 
-          <a href="#" class="text-blue-500 hover:text-blue-700 font-semibold">
+          Need an account? {' '}
+          <a href="/signup" class="text-blue-500 hover:text-blue-700 font-semibold">
             Create an account
           </a>
         </p>
   
-        <p class="text-sm text-gray-500 mt-12">&copy; 2021 Talwind - All Rights Reserved.</p>
+        <p class="text-sm text-gray-500 mt-12">&copy; 2022 Joey Faris - All Rights Reserved.</p>
       </div>
 
     </div>

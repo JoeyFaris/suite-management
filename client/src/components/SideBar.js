@@ -18,7 +18,7 @@ export default function SideBar() {
     ]
     const [open, setOpen] = useState(true)
     return (
-        <section className="Z-[999] flex gap=6">
+        <section className="fixed top-0 flex gap=6">
             <div className={`bg-[#0e0e0e] min-h-screen ${open ? 'w-72' : 'w-16'} duration-500 text-gray-100 px-4`}>
                 <div className="py-6 flex justify-end">
                     <HiMenuAlt2 
@@ -40,13 +40,13 @@ export default function SideBar() {
                     </Link>
                         ))
 }
-                <div> <Link to={'/'}  className='fixed static items-bottom bottom-7 left-5 justify-center whitespace-pre duration-500'>
-                        <div>{React.createElement(BiLogOut, {size: '20'})}</div>
+                <div> <Link to={'/login'}  className='fixed static items-bottom bottom-7 left-5 justify-center whitespace-pre duration-500'>
+                        <div>{React.createElement(BiLogOut, {size: '20'})}</div> 
                         <h2 
                         style={{
                             transitionDelay: `${0 + 3}00ms`,
                         }}
-                        className={`whitespace-pre duration-500 ${!open && `opacity-0 translate-x-28 overflow-hidden`}`}>Login/Logout</h2>
+                        className={`whitespace-pre duration-500 ${!open && `opacity-0 translate-x-28 overflow-hidden`}`}>Login</h2>
                     </Link>
                 </div>
                 </div>
