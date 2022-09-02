@@ -7,6 +7,7 @@ import SignUp from "./components/SignUp";
 import PaymentPage from "./components/PaymentPage";
 import Maintenance from "./components/Maintenance";
 import ContactPage from "./components/ContactPage";
+import MaintenanceCardsContainer from "./components/MaintenanceCardsContainer";
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
           <Route path='/maintenance' element={<Maintenance/>}> </Route>
           <Route path="/paymentsandbalances" element={<PaymentPage />} ></Route>
           <Route path='/contactpage' element={<ContactPage/>}> </Route>
+          <Route path='/maintenancecards' element={<MaintenanceCardsContainer/>}></Route>
         </Routes>
 
     </BrowserRouter>
