@@ -13,8 +13,8 @@ export default function SideBar({currentUser}) {
         {name: "Home", link:'/', icon: AiOutlineHome},
         {name: "Payments and Balances", link:'/paymentsandbalances', icon: BsCreditCard},
         {name: "My Lease", link:'/', icon: AiOutlineFile},
-        {name: "Maintenance Request", link:'/', icon: BiWrench},
-        {name: "Contact Us", link:'/', icon: BsHeadset},
+        {name: "Maintenance Requests", link:'/maintenance', icon: BiWrench},
+        {name: "Contact Us", link:'/contactpage', icon: BsHeadset},
     ]
     const [open, setOpen] = useState(true)
     return (
