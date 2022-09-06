@@ -10,12 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_31_160230) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_06_155613) do
+  create_table "leases", force: :cascade do |t|
+    t.string "pdf"
+    t.float "base_rent"
+    t.float "nnn_expenses"
+    t.float "electric"
+    t.float "gas"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "requests", force: :cascade do |t|
+    t.string "category"
+    t.string "comment"
+    t.boolean "completeness"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "username"
     t.string "email"
     t.string "password_digest"
-    t.integer "lease_id"
+    t.integer "leases_id"
   end
 
 end
