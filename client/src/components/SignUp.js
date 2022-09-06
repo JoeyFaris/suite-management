@@ -58,7 +58,7 @@ function SignUp({updateUser}) {
             name="username" 
             id="username" 
             placeholder="Enter Full Name" 
-            class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500focus:bg-white focus:outline-none" required
+            class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500focus:bg-white focus:outline-none" 
             value={username}
             onChange={(e) => setUsername(e.target.value)}/>
           </div>
@@ -69,7 +69,7 @@ function SignUp({updateUser}) {
             name="email" 
             id="email" 
             placeholder="Enter Email Address" 
-            class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none" autofocus autocomplete required
+            class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             />
@@ -113,7 +113,7 @@ function SignUp({updateUser}) {
   
         <p class="mt-8">
           Already have an account? {' '}
-          <a href="/signup" class="text-blue-500 hover:text-blue-700 font-semibold">
+          <a href="/login" class="text-blue-500 hover:text-blue-700 font-semibold">
             Back to login
           </a>
         </p>

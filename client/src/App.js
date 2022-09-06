@@ -18,7 +18,7 @@ function App() {
     <BrowserRouter>
       <SideBar currentUser={currentUser} updateUser={updateUser}/>
         <Routes>
-          <Route path="/" element={<HomePage />} ></Route>
+          <Route path="/" element={<HomePage currentUser={currentUser}/>} ></Route>
           <Route path="/login" element={<LogIn updateUser={updateUser}/>} ></Route>
           <Route path='/signup' element={<SignUp updateUser={updateUser}/>}></Route>
           <Route path='/maintenance' element={<Maintenance/>}> </Route>

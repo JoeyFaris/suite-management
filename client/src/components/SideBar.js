@@ -7,7 +7,7 @@ import {Link} from 'react-router-dom'
 import HomePage from "./HomePage"
 
 
-export default function SideBar({currentUser}) {
+export default function SideBar({currentUser, onLogout}) {
    
     const menus = [
         {name: "Home", link:'/', icon: AiOutlineHome},
@@ -17,6 +17,14 @@ export default function SideBar({currentUser}) {
         {name: "Contact Us", link:'/contactpage', icon: BsHeadset},
     ]
     const [open, setOpen] = useState(true)
+
+    function handleLogout() {
+        fetch("/logout", {
+          method: "DELETE",
+        }).then(() => onLogout());
+      }
+
+
     return (
         <section className="fixed top-0 flex gap=6">
             <div className={`bg-[#0e0e0e] min-h-screen ${open ? 'w-72' : 'w-16'} duration-500 text-gray-100 px-4`}>
@@ -52,7 +60,7 @@ export default function SideBar({currentUser}) {
 }
                 {currentUser ? 
                 <div> 
-                    <Link to={'/login'}  className='fixed static items-bottom bottom-7 left-5 justify-center whitespace-pre duration-500'>
+                    <Link onClick={handleLogout}  className='fixed static items-bottom bottom-7 left-5 justify-center whitespace-pre duration-500'>
                         <div>{React.createElement(BiLogOut, {size: '20'})}</div> 
                        <h2 
                         style={{

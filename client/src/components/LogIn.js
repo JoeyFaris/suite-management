@@ -55,7 +55,7 @@ function LogIn({updateUser}) {
         <h1 class="text-xl font-bold">Suite Management Login</h1>
         <h1 class="text-xl md:text-2xl font-bold leading-tight mt-12">Log in to your account</h1>
   
-        <form onSubmit={handleSubmit}class="mt-6" action="#" method="POST">
+        <form onSubmit={handleSubmit} class="mt-6" action="#" method="POST">
         {errors ? errors.map((e) => <div>{e}</div>) : null}
         <div>
             <label class="block text-gray-700">Full Name</label>
