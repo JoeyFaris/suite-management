@@ -5,6 +5,7 @@ class AddUser < ActiveRecord::Migration[7.0]
       t.string :email
       t.string :password_digest
       t.integer :lease_id
+
     end
   end
 end

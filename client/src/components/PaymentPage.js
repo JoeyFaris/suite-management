@@ -1,20 +1,24 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 
 function PaymentPage() {
     const countries = ["China", "Russia", "UK"];
     const [menu, setMenu] = useState(false);
     const [country, setCountry] = useState("United States");
+    const [expenses, setExpenses] = useState([])
 
     const changeText = (e) => {
         setMenu(false);
         setCountry(e.target.textContent);
     };
+    
+      useEffect(() => {
+        fetch("/leases/1")
+          .then((r) => r.json())
+          .then((data) => setExpenses(data));
+      }, []);
 
-    let today = new Date();
-
-let date=today.getDate() + "-"+ parseInt(today.getMonth()+1) +"-"+today.getFullYear();
-
-console.log(date)
+      const total = expenses.base_rent + expenses.nnn_expenses + expenses.electric + expenses.gas
+      
 
     return (
 //         
@@ -36,14 +40,18 @@ console.log(date)
                         <div className="xl:w-3/5 flex flex-col sm:flex-row xl:flex-col justify-center items-center bg-gray-100 py-7 sm:py-0 xl:py-10 px-10 xl:w-full">
                             <div className="flex flex-col justify-start items-start w-full space-y-4">
                                 <p className="justify-center items-center text-xl md:text-2xl leading-normal text-gray-800">Current Balance for the month of: September 2022</p>
-                                <p className="text-base font-semibold leading-none text-gray-600">$1,250.00</p>
+                                <p className="text-base font-semibold leading-none text-gray-600">Base Rent: ${expenses.base_rent}</p>
+                                <p className="text-base font-semibold leading-none text-gray-600">NNN expenses: ${expenses.nnn_expenses}</p>
+                                <p className="text-base font-semibold leading-none text-gray-600">Electric: ${expenses.electric}</p>
+                                <p className="text-base font-semibold leading-none text-gray-600">Gas: ${expenses.gas}</p>
                             </div>
-                            <div className="mt-6 sm:mt-0 xl:my-10 xl:px-20 w-52 sm:w-96 xl:w-auto">
+                            <div className="mt-1  xl:my-4 xl:px-20 w-52 sm:w-96 xl:w-auto">
                                
                             </div>
                         
-
+                            <div className="text-3xl">TOTAL = ${total}</div>
                         <div className="p-8 bg-gray-100 flex flex-col lg:w-full xl:w-3/5">
+                            
                             <button className="border border-transparent hover:border-gray-300 bg-gray-900 hover:bg-white text-white hover:text-gray-900 flex flex-row justify-center items-center space-x-2 py-4 rounded w-full">
                                 <div>
                                     <svg className="fill-current" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
