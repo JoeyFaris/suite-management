@@ -34,7 +34,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_06_155613) do
     t.string "username"
     t.string "email"
     t.string "password_digest"
-    t.integer "leases_id"
+    t.integer "lease_id"
   end
 
 end

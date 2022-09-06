@@ -13,11 +13,11 @@ Request.destroy_all
 
 puts "🌱 Seeding Leases..."
 
-l1 = Lease.create(pdf: "https://www.aircre.com/site/wp-content/uploads/2021/01/Multi-Tenant-Office-Lease-Net.pdf", base_rent: "2150.00", nnn_expenses:"250.00", electric: "114.29", gas: "52.11")
+l1 = Lease.create(pdf: "https://www.aircre.com/site/wp-content/uploads/2021/01/Multi-Tenant-Office-Lease-Net.pdf", base_rent: "2150.00", nnn_expenses:"250.00", electric: "114.29", gas: "52.12")
 
 puts "🌱 Seeding Users..."
 
-u1 = User.create(username: "Joey Faris", email: "joeyfaris1@yahoo.com", password:"password", password_confirmation: "password", leases_id: l1.id)
+u1 = User.create(username: "Joey Faris", email: "joeyfaris1@yahoo.com", password:"password", password_confirmation: "password", lease_id: l1.id)
 puts u1.username
 puts "🌱 Seeding Requests..."
 
