@@ -6,6 +6,7 @@ class CreateLeases < ActiveRecord::Migration[7.0]
       t.float :nnn_expenses
       t.float :electric
       t.float :gas
+      t.string :user_id
       t.timestamps
     end
   end

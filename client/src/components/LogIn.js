@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import {useNavigate} from 'react-router-dom'
+import { BsBuilding } from "react-icons/bs";
 
 
 function LogIn({updateUser}) {
@@ -29,7 +30,6 @@ function LogIn({updateUser}) {
               res.json().then(user => {
                 updateUser({id: user.id, username: user.username})
                 navigate(`/`)
-                // will add redirect
               })
             } else {
               res.json().then(json => setErrors(Object.entries(json.errors)))
@@ -51,9 +51,8 @@ function LogIn({updateUser}) {
           flex items-center justify-center">
   
       <div class="w-full h-100">
-  
-        <h1 class="text-xl font-bold">Suite Management Login</h1>
-        <h1 class="text-xl md:text-2xl font-bold leading-tight mt-12">Log in to your account</h1>
+        <h1 class="text-xl font-bold inline-flex md:text-3xl"><BsBuilding size={30}/>Suite Management Login</h1>
+        <h1 class="text-l md:text-xl font-bold leading-tight mt-12">Log in to your account</h1>
   
         <form onSubmit={handleSubmit} class="mt-6" action="#" method="POST">
         {errors ? errors.map((e) => <div>{e}</div>) : null}

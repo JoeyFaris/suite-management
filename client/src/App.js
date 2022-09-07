@@ -8,6 +8,7 @@ import PaymentPage from "./components/PaymentPage";
 import Maintenance from "./components/Maintenance";
 import ContactPage from "./components/ContactPage";
 import MaintenanceCardsContainer from "./components/MaintenanceCardsContainer";
+import MyLease from "./components/MyLease";
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
           <Route path="/" element={<HomePage currentUser={currentUser}/>} ></Route>
           <Route path="/login" element={<LogIn updateUser={updateUser}/>} ></Route>
           <Route path='/signup' element={<SignUp updateUser={updateUser}/>}></Route>
+          <Route path='/mylease' element={<MyLease/>}> </Route>
           <Route path='/maintenance' element={<Maintenance/>}> </Route>
           <Route path="/paymentsandbalances" element={<PaymentPage />} ></Route>
           <Route path='/contactpage' element={<ContactPage/>}> </Route>
