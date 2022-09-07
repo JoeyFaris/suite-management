@@ -12,8 +12,8 @@ export default function SideBar({currentUser, onLogout}) {
     const menus = [
         {name: "Home", link:'/', icon: AiOutlineHome},
         {name: "Payments and Balances", link:'/paymentsandbalances', icon: BsCreditCard},
-        {name: "My Lease", link:'/', icon: AiOutlineFile},
-        {name: "Maintenance Requests", link:'/maintenance', icon: BiWrench},
+        {name: "My Lease", link:'/mylease', icon: AiOutlineFile},
+        {name: "Maintenance Board", link:'/maintenance', icon: BiWrench},
         {name: "Contact Us", link:'/contactpage', icon: BsHeadset},
     ]
     const [open, setOpen] = useState(true)
