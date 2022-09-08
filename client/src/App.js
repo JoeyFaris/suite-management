@@ -14,6 +14,16 @@ import MyLease from "./components/MyLease";
 function App() {
   const [currentUser, setCurrentUser] = useState(false)
   const updateUser = (user) => setCurrentUser(user)
+
+  // useEffect(() => {
+  //   fetch("/me").then((response) => {
+  //     if (response.ok) {
+  //       response.json().then((user) => setCurrentUser(user));
+  //     }
+  //   });
+  // }, []);
+
+
  
   return (
     <BrowserRouter>
