@@ -1,3 +1,4 @@
 class RequestSerializer < ActiveModel::Serializer
-    attributes :id, :category, :comment, :users_id
+    attributes :id, :category, :comment, :user_id
+    belongs_to :user
   end

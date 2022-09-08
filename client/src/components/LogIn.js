@@ -29,7 +29,7 @@ function LogIn({updateUser}) {
               res.json().then(user => {
                 updateUser({id: user.id, username: user.username})
                 navigate(`/`)
-                // will add redirect
+
               })
             } else {
               res.json().then(json => setErrors(Object.entries(json.errors)))
