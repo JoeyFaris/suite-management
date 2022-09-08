@@ -57,13 +57,14 @@ function LogIn({updateUser}) {
         <form onSubmit={handleSubmit} class="mt-6" action="#" method="POST">
         {errors ? errors.map((e) => <div>{e}</div>) : null}
         <div>
+          
             <label class="block text-gray-700">Full Name</label>
             <input 
             type="username" 
             name="username" 
             id="username" 
             placeholder="Enter Full Name" 
-            class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none" autofocus autocomplete required
+            class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none" autoFocus autoComplete required
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             />
@@ -75,7 +76,7 @@ function LogIn({updateUser}) {
             name="email" 
             id="email" 
             placeholder="Enter Email Address" 
-            class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none" autofocus autocomplete required
+            class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none" autoFocus autoComplete required
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             />
@@ -88,7 +89,7 @@ function LogIn({updateUser}) {
             name="" 
             id="password" 
             placeholder="Enter Password" 
-            minlength="6" 
+            minLength="6" 
             class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none" required
             value={password}
             onChange={(e) => setPassword(e.target.value)}
@@ -96,7 +97,7 @@ function LogIn({updateUser}) {
           </div>
   
           <div class="text-right mt-2">
-            <a href="#" class="text-sm font-semibold text-gray-700 hover:text-blue-700 focus:text-blue-700">Forgot Password?</a>
+            <a class="text-sm font-semibold text-gray-700 hover:text-blue-700 focus:text-blue-700">Forgot Password?</a>
           </div>
   
           <button type="submit" class="w-full block bg-blue-700 hover:bg-blue-400 focus:bg-blue-400 text-white font-semibold rounded-lg

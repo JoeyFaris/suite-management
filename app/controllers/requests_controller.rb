@@ -2,7 +2,7 @@ class RequestsController < ApplicationController
 
     def index
         requests = Request.all
-        render json: requests
+        render json: requests, include: :user
     end
 
     def create

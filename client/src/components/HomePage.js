@@ -10,13 +10,13 @@ function HomePage({currentUser}) {
   let today = new Date();
   let date=today.getDate() + "-"+ parseInt(today.getMonth()+1) +"-"+today.getFullYear();
 
-  const options = {
-    method: 'GET',
-    headers: {
-      'X-RapidAPI-Key': '1a3ef7e2a6msh37681d59318872ep145809jsn7ce65add9101',
-      'X-RapidAPI-Host': 'reuters-business-and-financial-news.p.rapidapi.com'
-    }
-  };
+//   const options = {
+//     method: 'GET',
+//     headers: {
+//       'X-RapidAPI-Key': '1a3ef7e2a6msh37681d59318872ep145809jsn7ce65add9101',
+//       'X-RapidAPI-Host': 'reuters-business-and-financial-news.p.rapidapi.com'
+//     }
+//   };
   
 //  useEffect(() => {
 //   fetch('https://reuters-business-and-financial-news.p.rapidapi.com/article-date/01-04-2021', options)

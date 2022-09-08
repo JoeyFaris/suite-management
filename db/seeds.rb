@@ -28,7 +28,7 @@ l1 = Lease.create(pdf: "https://www.aircre.com/site/wp-content/uploads/2021/01/M
 
 puts "🌱 Seeding Requests..."
 
-r1 = Request.create(category: "Elevator", comment: "South entrance elevator 2 not working.", completeness: false, user_id: u2.id)
+r1 = Request.create(category: "Elevator", comment: "South entrance elevator 2 not working.", completeness: false, user_id: u6.id)
 r2 = Request.create(category: "Lobby", comment: "Two chairs broken in the lobby", completeness: false, user_id: u2.id)
 r3 = Request.create(category: "Doors and Locks", comment: "The lock on the door to the stairs on floor 4 is broken.", completeness: false, user_id: u3.id)
 r4 = Request.create(category: "Electrical and Lighting", comment: "Lighting fixture on floor two in the hallway is flickering.", completeness: false, user_id: u4.id)
