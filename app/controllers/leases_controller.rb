@@ -7,7 +7,7 @@ class LeasesController < ApplicationController
     end
 
     def show
-        lease = Lease.first
+        lease = Lease.find_by(id: params[:id])
         render json: lease
     end
 end

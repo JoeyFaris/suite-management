@@ -70,11 +70,11 @@ console.log('hello')
       <div className="max-w-md w-full space-y-8">
         <div>
           <h2 className="mt-6 text-center text-3xl tracking-tight font-bold text-gray-900">
-            Submit your book here
+            Post your maintenance requests
           </h2>
           <p className="mt-2 text-center text-sm text-gray-600">
             Or{' '}
-            <a href="/" className="font-medium text-indigo-600 hover:text-indigo-500">
+            <a href="/" className="font-medium text-blue-600 hover:text-blue-500">
               go back to the home page
             </a>
           </p>
@@ -87,13 +87,13 @@ console.log('hello')
                 Title
               </label>
               <input
-                id="Title"
-                name="Title"
-                type="Title"
-                autoComplete="Title"
+                id="Location"
+                name="Location"
+                type="Location"
+                autoComplete="Location"
                 required
                 className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                placeholder="Title"
+                placeholder="Location on premises?"
                 value={category}
       onChange={(e) => setCategory(e.target.value)}
         
@@ -104,13 +104,13 @@ console.log('hello')
                 Author
               </label>
               <input
-                id="Amazon Link"
-                name="Amazon Link"
+                id="comment"
+                name="comment"
                 type="Amazon Link"
                 autoComplete="current-password"
                 required
-                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                placeholder="Amazon Link"
+                className="appearance-none rounded-none h-20 mt-4 relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                placeholder="Please provide more detail..."
                 value={comment}
 onChange={(e) => setComment(e.target.value)}
                

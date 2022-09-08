@@ -11,33 +11,49 @@ function LogIn({updateUser}) {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
 
-    function handleSubmit(e){
-        e.preventDefault();
-        const userObj = {
-            user: {
-            username: username,
-            email: email,
-            password: password
-            }
-        }
-        fetch('/login', {
-          method: "POST",
-          headers:{"Content-Type": "Application/json"},
-          body:JSON.stringify(userObj)
-        })
-        .then(res => {
-            if(res.ok) {
-              res.json().then(user => {
-                updateUser({id: user.id, username: user.username})
-                navigate(`/`)
-              })
-            } else {
-              res.json().then(json => setErrors(Object.entries(json.errors)))
-            }
-          })
+//     function handleSubmit(e){
+//         e.preventDefault();
+//         const userObj = {
+//             user: {
+//             username: username,
+//             email: email,
+//             password: password
+//             }
+//         }
+//         fetch('/login', {
+//           method: "POST",
+//           headers:{"Content-Type": "Application/json"},
+//           body:JSON.stringify(userObj)
+//         })
+//         .then(res => {
+//             if(res.ok) {
+//               res.json().then(user => {
+//                 updateUser({id: user.id, username: user.username})
+//                 navigate(`/`)
+//               })
+//             } else {
+//               res.json().then(json => setErrors(Object.entries(json.errors)))
+//             }
+//           })
         
    
+// }
+function handleSubmit(e) {
+  e.preventDefault();
+  fetch("/login", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ username }),
+  })
+    .then((r) => r.json())
+    .then((user) => updateUser(user));
+    navigate('/')
 }
+
+
+
     return (
 
         
