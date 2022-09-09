@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 
 export default function MyLease() {
-    // const  [lease, setLease] = useState([])
+//     const  [lease, setLease] = useState([])
 
-    // useEffect(() => {
-    //     fetch('/leases')
-    //     .then((res) => res.json())
-    //     .then((data) => setLease(data))
-    // }, [])
+//     useEffect(() => {
+//         fetch('/leases')
+//         .then((res) => res.json())
+//         .then((data) => setLease(data))
+//     }, [])
 
 // console.log(lease[0].pdf)
     return (

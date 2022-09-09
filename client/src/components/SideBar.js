@@ -1,4 +1,4 @@
-import React, {useState} from "react"
+import React, {useState, useEffect} from "react"
 import { HiMenuAlt2 } from 'react-icons/hi'
 import { AiOutlineHome, AiOutlineFile} from 'react-icons/ai'
 import {BsCreditCard, BsHeadset, BsBuilding} from 'react-icons/bs'
@@ -7,16 +7,18 @@ import {Link} from 'react-router-dom'
 import HomePage from "./HomePage"
 
 
-export default function SideBar({currentUser, onLogout}) {
+export default function SideBar({currentUser, onLogout, user}) {
+   
    
     const menus = [
         {name: "Home", link:'/', icon: AiOutlineHome},
         {name: "Payments and Balances", link:'/paymentsandbalances', icon: BsCreditCard},
-        {name: "My Lease", link:'/', icon: AiOutlineFile},
+        {name: "My Lease", link:'/mylease', icon: AiOutlineFile},
         {name: "Maintenance Requests", link:'/maintenance', icon: BiWrench},
         {name: "Contact Us", link:'/contactpage', icon: BsHeadset},
     ]
     const [open, setOpen] = useState(true)
+
 
     function handleLogout() {
         fetch("/logout", {
@@ -24,10 +26,11 @@ export default function SideBar({currentUser, onLogout}) {
         }).then(() => onLogout());
       }
 
-
+    
+      
     return (
         <section className="fixed top-0 flex gap=6">
-            <div className={`bg-[#0e0e0e] min-h-screen ${open ? 'w-72' : 'w-16'} duration-500 text-gray-100 px-4`}>
+            <div className={`bg-[#18181b] min-h-screen ${open ? 'w-72' : 'w-16'} duration-500 text-gray-100 px-4`}>
             <div className="py-6 flex justify-end">
                     <HiMenuAlt2 
                     size={26} 
@@ -58,7 +61,7 @@ export default function SideBar({currentUser, onLogout}) {
                     </Link>
                         ))
 }
-                {currentUser ? 
+                {user ? 
                 <div> 
                     <Link onClick={handleLogout}  className='fixed static items-bottom bottom-7 left-5 justify-center whitespace-pre duration-500'>
                         <div>{React.createElement(BiLogOut, {size: '20'})}</div> 

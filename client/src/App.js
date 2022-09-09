@@ -15,19 +15,33 @@ function App() {
   const [currentUser, setCurrentUser] = useState(false)
   const updateUser = (user) => setCurrentUser(user)
   console.log(currentUser)
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    fetch("/me").then((response) => {
+      if (response.ok) {
+        response.json().then((user) => setUser(user));
+      }
+    });
+  }, []);
+
+  console.log(user)
+
+  function onLogout() {
+    setCurrentUser(!currentUser)
+
+  }
  
   return (
     <div>
-      {/* <SideBar currentUser={currentUser} updateUser={updateUser}/> */}
         <Routes>
-          <Route path="/" element={<HomePage currentUser={currentUser}/>} />
+          <Route path="/" element={<><SideBar currentUser={currentUser} onLogout={onLogout} /><HomePage currentUser={currentUser}/></>} />
           <Route path="/login" element={<LogIn updateUser={updateUser}/>} />
           <Route path='/signup' element={<SignUp updateUser={updateUser}/>}/>
-          <Route path='/mylease' element={<MyLease/>}/>
-          <Route path='/maintenance' element={<Maintenance/>}/>
-          <Route path="/paymentsandbalances" element={<PaymentPage />} />
-          <Route path='/contactpage' element={<ContactPage/>}/>
-          <Route path='/maintenancecards' element={<MaintenanceCardsContainer/>}/>
+          <Route path='/mylease' element={<><SideBar currentUser={currentUser}/><MyLease/></>}/>
+          <Route path='/maintenance' element={<><SideBar currentUser={currentUser}/><Maintenance/></>}/>
+          <Route path="/paymentsandbalances" element={<><SideBar currentUser={currentUser}/><PaymentPage currentUser={currentUser} /></>} />
+          <Route path='/contactpage' element={<><SideBar currentUser={currentUser}/><ContactPage/></>}/>
         </Routes>
 
     </div>

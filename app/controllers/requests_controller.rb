@@ -19,7 +19,7 @@ class RequestsController < ApplicationController
     private 
 
     def request_params 
-        params.permit(:category, :comment)
+        params.permit(:category, :comment, :user)
     end
 
 end
