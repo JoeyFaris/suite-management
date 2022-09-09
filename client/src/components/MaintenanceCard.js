@@ -3,7 +3,9 @@ import {FcLike, FcLikePlaceholder} from 'react-icons/fc'
 
 function MaintenanceCard({request}) {
     const [like, setLike] = useState(false)
+    const [complete, setCompleted] = useState(false)
     function handleDelete() {
+        setCompleted(!complete)
         fetch(`/requests/${request.id}`, {
             method: 'DELETE'
         })
@@ -32,7 +34,12 @@ function MaintenanceCard({request}) {
               Comment: {request.comment}
             </p>
             {like ? <FcLike class="inline-flex items-center mr-20" onClick={handleLike}></FcLike> : <FcLikePlaceholder class="inline-flex items-center mr-20" onClick={handleLike}>Like?</FcLikePlaceholder>}
-              <button href="#" class="inline-flex items-center py-2 px-4 text-sm font-medium text-center text-gray-900 bg-white rounded-lg border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-700 dark:focus:ring-gray-700" onClick={handleDelete} >Mark as Completed</button>
+              {!complete ? 
+              <button href="#" class="inline-flex items-center py-2 px-4 text-sm font-medium text-center text-gray-900 bg-white rounded-lg border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-700 dark:focus:ring-gray-700" onClick={handleDelete} >Mark as Completed</button> 
+              :
+              <button href="#" class="inline-flex items-center py-2 px-4 text-sm font-medium text-center text-gray-900 bg-white rounded-lg border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-700 dark:focus:ring-gray-700" onClick={handleDelete} >Completed!</button> 
+             
+              }
              </div>
           <div class="py-3 px-6 border-t border-gray-300 text-gray-600">
             Posted by: {request.user.username}

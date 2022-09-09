@@ -58,20 +58,23 @@ function ContactPage() {
               
             >
               <div class="text-black px-4 py-6 md:p-12 md:mx-6 h-full w-full ">
-                <h4 class="text-xl font-semibold mb-6">New York City Office</h4>
-                <p class="text-sm mb-20">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                  consequat.
+                <h4 class="text-3xl font-semibold mb-6">New York City Office</h4>
+                <p class="text-m">
+                8425 Bellevue Street
+New York, NY 10128
                 </p>
-                <h4 class="text-xl font-semibold mb-6 mt-20">Los Angeles Office</h4>
-                <p class="text-sm">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                  consequat.
+                <p class="text-m mb-20">
+               {' Phone Number: +1 (646) 555-5555'}
                 </p>
+                <h4 class="text-3xl font-semibold mb-6 mt-20">Los Angeles Office</h4>
+                <p class="text-m">
+                98 Wilshire Ave
+Los Angeles, CA 90026
+                </p>
+                <p class="text-m">
+               {' Phone Number: +1 (213) 555-5555'}
+                </p>
+                {/* <h4 class="text-3xl font-semibold mb-6 mt-20">Please reach out with any questions, we are here to help!</h4> */}
               </div>
             </div>
           </div>
@@ -84,4 +87,3 @@ function ContactPage() {
 }
 
 export default ContactPage;
-

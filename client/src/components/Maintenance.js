@@ -43,7 +43,7 @@ useEffect(() => {
 
 
   return (
-    <div class="absolute align-start ml-72 pl-10 py-10 w-10/12 pr-20 bg-gray-100">  
+    <div class="absolute align-start ml-72 pl-10 py-10 w-10/12 pr-20">  
     <div className="min-h-full flex items-center justify-center px-4 sm:px-6 lg:px-8 mb-4">
       <div className="max-w-md w-full bg-gray-300 p-8 space-y-8">
         <div>
