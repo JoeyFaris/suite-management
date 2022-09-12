@@ -1,14 +1,22 @@
 import React, {useState} from "react"
 import {FcLike, FcLikePlaceholder} from 'react-icons/fc'
 
-function MaintenanceCard({request}) {
+function MaintenanceCard({request, handleDelete}) {
     const [like, setLike] = useState(false)
     const [complete, setCompleted] = useState(false)
+ 
+   
+
+
     function handleDelete() {
         setCompleted(!complete)
+        console.log(request.id)
         fetch(`/requests/${request.id}`, {
             method: 'DELETE'
         })
+        .then((r) => r.json())
+  
+  
         .then(res => {
             if(res.ok){
                 console.log(res)
@@ -28,9 +36,9 @@ function MaintenanceCard({request}) {
         <div class="flex justify-center">
         <div class="block rounded-lg shadow-lg bg-white max-w-sm text-center">
           <div class="p-6">
-            <h5 class="text-gray-900 text-xl font-medium mb-2">
-                Category: {request.category}</h5>
-            <p class="text-gray-700 text-base mb-4">
+            <h5 class="text-gray-900 text-2xl font-medium mb-2">
+                {request.category}</h5>
+            <p class="text-gray-900 text-base mb-4">
               Comment: {request.comment}
             </p>
             {like ? <FcLike class="inline-flex items-center mr-20" onClick={handleLike}></FcLike> : <FcLikePlaceholder class="inline-flex items-center mr-20" onClick={handleLike}>Like?</FcLikePlaceholder>}
@@ -42,7 +50,8 @@ function MaintenanceCard({request}) {
               }
              </div>
           <div class="py-3 px-6 border-t border-gray-300 text-gray-600">
-            Posted by: {request.user.username}
+              {request.user.username ? `Posted by: ${request.user.username}` : 'Hello'}
+            
           </div>
         </div>
       </div>

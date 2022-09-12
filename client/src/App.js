@@ -9,6 +9,7 @@ import Maintenance from "./components/Maintenance";
 import ContactPage from "./components/ContactPage";
 import MaintenanceCardsContainer from "./components/MaintenanceCardsContainer";
 import MyLease from "./components/MyLease";
+import StripeContainer from "./components/StripeContainer";
 
 
 function App() {
@@ -38,6 +39,7 @@ function App() {
           <Route path="/" element={<><SideBar currentUser={currentUser} onLogout={onLogout} /><HomePage currentUser={currentUser}/></>} />
           <Route path="/login" element={<LogIn updateUser={updateUser}/>} />
           <Route path='/signup' element={<SignUp updateUser={updateUser}/>}/>
+          <Route path='/stripecontainer' element={<StripeContainer/>}/>
           <Route path='/mylease' element={<><SideBar currentUser={currentUser}/><MyLease/></>}/>
           <Route path='/maintenance' element={<><SideBar currentUser={currentUser}/><Maintenance/></>}/>
           <Route path="/paymentsandbalances" element={<><SideBar currentUser={currentUser}/><PaymentPage currentUser={currentUser} /></>} />

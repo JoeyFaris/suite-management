@@ -33,14 +33,14 @@ function PaymentPage({currentUser}) {
                                
                             <p href='/' class="text-sm leading-none"></p>
                         </button>
-                        <p className="text-3xl lg:text-4xl font-semibold leading-7 lg:leading-9 text-gray-800">Make Payment</p>
+                        <p className="text-3xl lg:text-4xl font-italics leading-7 lg:leading-9 text-gray-800 font-serif">Make Payment</p>
                         
                     </div>
 
                     
-                        <div className="xl:w-3/5 flex flex-col sm:flex-row xl:flex-col justify-center items-center bg-gray-100 py-7 sm:py-0 xl:py-10 px-10 xl:w-full">
+                        <div className="xl:w-3/5 flex flex-col sm:flex-row xl:flex-col justify-center items-center ml-6 bg-gray-100 py-7 sm:py-0 xl:py-10 px-10 xl:w-full">
                             <div className="flex flex-col justify-start items-start w-full space-y-4">
-                                <p className="justify-center items-center text-2xl md:text-3xl leading-normal text-gray-800">Current Balance for the month of: September 2022</p>
+                                <p className="justify-center items-center text-2xl md:text-3xl leading-normal text-gray-800 font-serif">Current Balance for the month of: September 2022</p>
                                
                                 <p className="text-base font-semibold leading-none text-gray-600">1. Base Rent: ${expenses.base_rent}</p>
                                 <p className="text-base font-semibold leading-none text-gray-600">2. NNN expenses: ${expenses.nnn_expenses}</p>

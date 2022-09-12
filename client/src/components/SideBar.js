@@ -18,6 +18,8 @@ export default function SideBar({currentUser, onLogout, user}) {
         {name: "Contact Us", link:'/contactpage', icon: BsHeadset},
     ]
     const [open, setOpen] = useState(true)
+    console.log(currentUser)
+
 
 
     function handleLogout() {
@@ -61,17 +63,18 @@ export default function SideBar({currentUser, onLogout, user}) {
                     </Link>
                         ))
 }
-                {user ? 
-                <div> 
-                    <Link onClick={handleLogout}  className='fixed static items-bottom bottom-7 left-5 justify-center whitespace-pre duration-500'>
-                        <div>{React.createElement(BiLogOut, {size: '20'})}</div> 
-                       <h2 
-                        style={{
-                            transitionDelay: `${0 + 3}00ms`,
-                        }} 
-                        className={`whitespace-pre duration-500 ${!open && `opacity-0 translate-x-28 overflow-hidden`}`}>Logout</h2>
-                    </Link>
-                </div>
+
+                {currentUser ? 
+             <div> 
+             <Link to={'/login'}  className='fixed static items-bottom bottom-7 left-5 justify-center whitespace-pre duration-500'>
+                 <div>{React.createElement(BiLogOut, {size: '20'})}</div> 
+                <h2 
+                 style={{
+                     transitionDelay: `${0 + 3}00ms`,
+                 }} 
+                 className={`whitespace-pre duration-500 ${!open && `opacity-0 translate-x-28 overflow-hidden`}`}>Logout</h2>
+             </Link>
+         </div>
                 :  
                 <div> 
                     <Link to={'/login'}  className='fixed static items-bottom bottom-7 left-5 justify-center whitespace-pre duration-500'>
