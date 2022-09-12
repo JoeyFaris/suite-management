@@ -24,7 +24,8 @@ u6 = User.create(username: "Christian Manning", email: "christianmanning@yahoo.c
 
 puts "🌱 Seeding Leases..."
 
-l1 = Lease.create(pdf: "https://www.aircre.com/site/wp-content/uploads/2021/01/Multi-Tenant-Office-Lease-Net.pdf", base_rent: "2150.00", nnn_expenses:"250.00", electric: "114.29", gas: "52.12", user_id: u1.id)
+l1 = Lease.create(pdf: "https://www.aircre.com/site/wp-content/uploads/2021/01/Multi-Tenant-Office-Lease-Net.pdf", base_rent: "2150.70", nnn_expenses:"254.40", electric: "114.29", gas: "52.12", user_id: u1.id)
+l1 = Lease.create(pdf: "https://www.aircre.com/site/wp-content/uploads/2021/01/Multi-Tenant-Office-Lease-Net.pdf", base_rent: "4150.03", nnn_expenses:"456.00", electric: "144.29", gas: "112.12", user_id: u2.id)
 
 puts "🌱 Seeding Requests..."
 

@@ -6,8 +6,6 @@ function MaintenanceCard({request, handleDelete}) {
     const [complete, setCompleted] = useState(false)
  
    
-
-
     function handleDelete() {
         setCompleted(!complete)
         console.log(request.id)

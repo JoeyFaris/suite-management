@@ -13,12 +13,13 @@ function PaymentPage({currentUser}) {
     console.log(currentUser.id)
     
       useEffect(() => {
-        fetch(`/leases/${currentUser.id}`)
+        fetch(`/users/${currentUser.id}`)
           .then((r) => r.json())
-          .then((data) => setExpenses(data));
+          .then((data) => setExpenses(data.leases[0]));
       }, []);
 
       const total = expenses.base_rent + expenses.nnn_expenses + expenses.electric + expenses.gas
+    const finalTotal = total.toFixed(2)
       
 
     return (
@@ -52,7 +53,7 @@ function PaymentPage({currentUser}) {
                                
                             </div>
                         
-                            <div className="text-3xl">TOTAL = ${total}</div>
+                            <div className="text-3xl">TOTAL = ${finalTotal}</div>
                         <div className="p-8 bg-gray-100 flex flex-col lg:w-full xl:w-3/5">
                             
                             <button className="border border-transparent hover:border-gray-300 bg-gray-900 hover:bg-white text-white hover:text-gray-900 flex flex-row justify-center items-center space-x-2 py-4 rounded w-full">
@@ -120,7 +121,7 @@ function PaymentPage({currentUser}) {
 
                             <button className="mt-8 border border-transparent hover:border-gray-300 bg-gray-900 hover:bg-white text-white hover:text-gray-900 flex justify-center items-center py-4 rounded w-full">
                                 <div>
-                                    <p className="text-base leading-4">Pay Outstanding Balance: ${total}</p>
+                                    <p className="text-base leading-4">Pay Outstanding Balance: ${finalTotal}</p>
                                 </div>
                             </button>
                         </div>

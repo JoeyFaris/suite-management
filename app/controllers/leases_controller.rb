@@ -7,7 +7,12 @@ class LeasesController < ApplicationController
     end
 
     def show
-        lease = Lease.first
+        lease = Lease.find(id: params[:id])
         render json: lease
+    end
+    
+    def create
+        request = Lease.create(pdf: params[:pdf])
+        render json: request, status: :created
     end
 end

@@ -40,7 +40,7 @@ function App() {
           <Route path="/login" element={<LogIn updateUser={updateUser}/>} />
           <Route path='/signup' element={<SignUp updateUser={updateUser}/>}/>
           <Route path='/stripecontainer' element={<StripeContainer/>}/>
-          <Route path='/mylease' element={<><SideBar currentUser={currentUser}/><MyLease/></>}/>
+          <Route path='/mylease' element={<><SideBar currentUser={currentUser}/><MyLease currentUser={currentUser}/></>}/>
           <Route path='/maintenance' element={<><SideBar currentUser={currentUser}/><Maintenance/></>}/>
           <Route path="/paymentsandbalances" element={<><SideBar currentUser={currentUser}/><PaymentPage currentUser={currentUser} /></>} />
           <Route path='/contactpage' element={<><SideBar currentUser={currentUser}/><ContactPage/></>}/>
