@@ -29,10 +29,12 @@ fetch('https://current-news.p.rapidapi.com/news/technology', options)
 	.catch(err => console.error(err));
 }, [])
 
+
+
     const renderBusinessData = data.map((news) => {
      if (news.urlToImage !== null) {
     return (
-<div class="p-6">  
+       <div class="p-6">  
     <div class="max-w-sm rounded overflow-hidden shadow-2xl shadow-black">
       <img class="w-full" src={news.urlToImage} alt="Mountain"/>
       <div class="px-6 py-4">
@@ -40,14 +42,16 @@ fetch('https://current-news.p.rapidapi.com/news/technology', options)
         <p class="text-gray-700 text-base">
           {news.description}
         </p>
-        <div class='pt-4 text-lg font-bold'>Author: {news.author}</div>
+        <div class='pt-4 text-lg font-bold'>Author: {news.author ? news.author : "No author available"}</div>
       </div>
       <div class="px-6 pb-2">
         <a href={news.url} class="inline-block bg-gray-800 rounded-full px-3 py-1 text-sm font-semibold text-white mr-2 mb-2">Go to source →</a>
       </div>
     </div>
-  </div>
-  )
+  </div> 
+    )
+  
+
     }
     else {
       return false
@@ -65,7 +69,7 @@ fetch('https://current-news.p.rapidapi.com/news/technology', options)
        <a href="/paymentsandbalances" class="inline-flex mr-20 items-center py-3 px-5 text-sm font-medium text-center text-gray-900 bg-white rounded-lg border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-700 dark:focus:ring-gray-700"><BsCreditCard size={26} className="curpr-pointer mr-3"/>Payments and Balances</a>
        <a href="/mylease" class="inline-flex mr-20 items-center py-3 px-5 text-sm font-medium text-center text-gray-900 bg-white rounded-lg border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-700 dark:focus:ring-gray-700"><AiOutlineFile size={26} className="curpr-pointer mr-3"/>My Lease</a>
        <a href="/maintenance" class="inline-flex mr-20 items-center py-3 px-5 text-sm font-medium text-center text-gray-900 bg-white rounded-lg border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-700 dark:focus:ring-gray-700"><BiWrench size={26} className="curpr-pointer mr-3"/>Maintenance Board</a>
-       <a href="/contactus" class="inline-flex mr-20 items-center py-3 px-5 text-sm font-medium text-center text-gray-900 bg-white rounded-lg border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-700 dark:focus:ring-gray-700"><BsHeadset size={26} className="curpr-pointer mr-3"/>Contact Us</a>
+       <a href="/contactpage" class="inline-flex mr-20 items-center py-3 px-5 text-sm font-medium text-center text-gray-900 bg-white rounded-lg border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-700 dark:focus:ring-gray-700"><BsHeadset size={26} className="curpr-pointer mr-3"/>Contact Us</a>
       
       </div>
       <p className="text-5xl mt-16 lg:text-4xl font-semibold leading-7 lg:leading-9 text-gray-800">Recent Business News</p>

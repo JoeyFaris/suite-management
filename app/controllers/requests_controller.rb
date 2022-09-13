@@ -6,7 +6,7 @@ class RequestsController < ApplicationController
     end
 
     def create
-        request = Request.create(request_params)
+        request = Request.create!(request_params)
         render json: request, status: :created
     end
 
@@ -19,7 +19,7 @@ class RequestsController < ApplicationController
     private 
 
     def request_params 
-        params.permit(:id, :category, :comment, :user)
+        params.permit(:id, :category, :comment, :user_id)
     end
 
 end

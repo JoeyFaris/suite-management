@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 export default function MyLease({currentUser}) {
-    const  [lease, setLease] = useState([])
+    const [lease, setLease] = useState([])
+    const [upload, setUpload] = useState(false)
     
 
     useEffect(() => {
@@ -19,6 +20,10 @@ const [file, setFile] = useState();
 function handleImageChange(e) {
   setFile(e.target.files[0])
   console.log(e.target.files[0])
+}
+
+function handleUpload() {
+  setUpload(!upload)
 }
 
 function uploadAddendum(e) {
@@ -42,7 +47,9 @@ function uploadAddendum(e) {
         <form class="mt-4" onSubmit={uploadAddendum}>
         <label htmlFor="file">File: {''}</label>
         <input type="file" name="PDF" onChange={handleImageChange}></input>
-        <button class="flex mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" type="submit">Upload</button>
+        <button class="flex mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" type="submit" onClick={handleUpload}> {upload ? 'Uploaded!' : 'Upload'}</button>
+
+
         </form>
         <div class="mt-10 flex-grow border-t border-gray-400 mr-96"></div>
         <div class="realtive grid grid-cols-3 gap-4">

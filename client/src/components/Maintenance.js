@@ -2,12 +2,10 @@ import React, {useState, useEffect} from "react";
 import { useNavigate } from "react-router";
 import MaintenanceCard from "./MaintenanceCard";
 
-function Maintenance() {
+function Maintenance({currentUser}) {
 const [category, setCategory] = useState("")
 const [comment, setComment] = useState("")
 const [req, setReq] = useState([])
-// const [complete, setCompleted] = useState(false)
-let navigate = useNavigate()
 
  // Fetching initial backend data
  
@@ -17,62 +15,60 @@ useEffect(() => {
   .then((data) => setReq(data))
       }, [])
 
-      
-
-     
+    
+  // Handle form submission
 
 function handleSubmit(e) {
   e.preventDefault()
-  console.log("Hello")
   const form = {
     category,
-    comment
+    comment,
+    user_id: currentUser.id
   }
 
-  fetch('/requests', {
+  const configurationObject = fetch('/requests', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify(form)
   })
-  .then((res) => console.log(res)).then(navigate('/maintenance'))
+  fetch('/requests', configurationObject)
+  .then((res) => res.json())
+  .then(data => setReq(data))
 }
 
+// Handle delete
 
-// function handleDelete(item) {
-//   setCompleted(!complete)
-//   console.log(item)
-//   fetch(`/requests/${item}`, {
-//       method: 'DELETE'
-//   })
-//   .then((r) => r.json())
-
-
-//   .then(res => {
-//       if(res.ok){
-//           console.log(res)
-//       } else {
-//           res.json().then(console.log)
-//       }
-//   })
-// }
+function handleDelete(cardId) {
+  fetch(`/requests/${cardId}`, {
+      method: 'DELETE'
+  })
+  fetch('/requests')
+  .then((res) => res.json())
+  .then((data) => {
+    console.log(data)
+    setTimeout(() => {
+      setReq(data)
+    }, '2000')
+  })
+ 
+}
 
 
       const renderReq = req.map((request) => {
         return (
-        <MaintenanceCard   
-        // handleDelete={handleDelete}    
+        <MaintenanceCard
+        handleDelete={handleDelete}
         key={request.id}
         category={request.category}
         request={request}
+
        
         />
         )
 
       })
-
-
 
   return (
     <div class="absolute align-start ml-72 pl-10 py-10 w-10/12 pr-20">  
