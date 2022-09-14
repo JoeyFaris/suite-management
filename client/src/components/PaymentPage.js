@@ -10,7 +10,8 @@ function PaymentPage({currentUser}) {
         setMenu(false);
         setCountry(e.target.textContent);
     };
-    console.log(currentUser.id)
+
+    console.log(currentUser)
     
       useEffect(() => {
         fetch(`/users/${currentUser.id}`)

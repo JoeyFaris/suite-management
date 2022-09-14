@@ -63,8 +63,8 @@ fetch('https://current-news.p.rapidapi.com/news/technology', options)
   return (
     <div class="absolute ml-72 pl-40 py-20 h-full w-full">
     <div class='italic hover:not-italic p-1'>{date}</div>
-    <h3 className="relative justify-center italic hover:not-italic text-2xl p-1">Welcome back, {currentUser.username}!</h3>
-    <div className="text-4xl text:bold relative justify-center py-10">Quick Links</div>
+    <h3 class="relative justify-center italic hover:not-italic text-2xl p-1">Welcome back, {currentUser.username}!</h3>
+    <div class="text-4xl text:bold relative justify-center py-10">Quick Links</div>
       <div>
        <a href="/paymentsandbalances" class="inline-flex mr-20 items-center py-3 px-5 text-sm font-medium text-center text-gray-900 bg-white rounded-lg border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-700 dark:focus:ring-gray-700"><BsCreditCard size={26} className="curpr-pointer mr-3"/>Payments and Balances</a>
        <a href="/mylease" class="inline-flex mr-20 items-center py-3 px-5 text-sm font-medium text-center text-gray-900 bg-white rounded-lg border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-700 dark:focus:ring-gray-700"><AiOutlineFile size={26} className="curpr-pointer mr-3"/>My Lease</a>
@@ -72,11 +72,11 @@ fetch('https://current-news.p.rapidapi.com/news/technology', options)
        <a href="/contactpage" class="inline-flex mr-20 items-center py-3 px-5 text-sm font-medium text-center text-gray-900 bg-white rounded-lg border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-700 dark:focus:ring-gray-700"><BsHeadset size={26} className="curpr-pointer mr-3"/>Contact Us</a>
       
       </div>
-      <p className="text-5xl mt-16 lg:text-4xl font-semibold leading-7 lg:leading-9 text-gray-800">Recent Business News</p>
+      <p class="text-5xl mt-16 lg:text-4xl font-semibold leading-7 lg:leading-9 text-gray-800">Recent Business News</p>
       <div class="relative flex py-5 mt-4 items-center"> 
     <div class="flex-grow border-t border-gray-400 mr-96"></div>
 </div>
-      <div className="grid grid-cols-3 gap-8 mr-96">{renderBusinessData}</div>
+      <div class="grid grid-cols-3 gap-8 mr-96">{renderBusinessData}</div>
     </div>
   );
 }

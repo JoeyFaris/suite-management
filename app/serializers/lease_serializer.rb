@@ -1,4 +1,4 @@
 class LeaseSerializer < ActiveModel::Serializer
     attributes :id, :pdf, :base_rent, :nnn_expenses, :electric, :gas
-    belongs_to :lease
+    belongs_to :user
   end

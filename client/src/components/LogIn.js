@@ -10,32 +10,6 @@ function LogIn({updateUser}) {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
 
-//     function handleSubmit(e){
-//         e.preventDefault();
-//         const userObj = {
-//             user: {
-//             username: username,
-//             email: email,
-//             password: password
-//             }
-//         }
-//         fetch('/login', {
-//           method: "POST",
-//           headers:{"Content-Type": "Application/json"},
-//           body:JSON.stringify(userObj)
-//         })
-//         .then(res => {
-//             if(res.ok) {
-//               res.json().then(user => {
-//                 updateUser({id: user.id, username: user.username})
-//                 navigate(`/`)
-
-//               })
-//             } else {
-//               res.json().then(json => setErrors(Object.entries(json.errors)))
-//             }
-//           })
-// }
 
 function handleSubmit(e) {
   e.preventDefault();
@@ -54,10 +28,7 @@ function handleSubmit(e) {
 
 
     return (
-
-        
         <section class="flex flex-col md:flex-row h-screen items-center">
-
     <div class="bg-gray-600 hidden lg:block w-full md:w-1/2 xl:w-2/3 h-screen">
       <img src="https://media.blogto.com/articles/20200311-25york.jpg?w=2048&cmd=resize_then_crop&height=1365&quality=70" alt="" class="w-full h-full object-cover p-1"/>
     </div>

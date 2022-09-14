@@ -11,11 +11,14 @@ import MyLease from "./components/MyLease";
 import StripeContainer from "./components/StripeContainer";
 
 
+
 function App() {
   const [currentUser, setCurrentUser] = useState(false)
   const updateUser = (user) => setCurrentUser(user)
   const [user, setUser] = useState(null);
 
+  console.log(user)
+  console.log(currentUser)
   useEffect(() => {
     fetch("/me").then((response) => {
       if (response.ok) {

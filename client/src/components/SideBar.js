@@ -7,7 +7,7 @@ import {Link} from 'react-router-dom'
 import HomePage from "./HomePage"
 
 
-export default function SideBar({currentUser, onLogout,}) {
+export default function SideBar({currentUser, onLogout}) {
     const [open, setOpen] = useState(true)
    
     const menus = [
@@ -26,9 +26,7 @@ export default function SideBar({currentUser, onLogout,}) {
           method: "DELETE",
         }).then(() => onLogout());
       }
-
     
-      
     return (
         <section className="fixed top-0 flex gap=6">
             <div className={`bg-[#18181b] min-h-screen ${open ? 'w-72' : 'w-16'} duration-500 text-gray-100 px-4`}>
@@ -65,13 +63,13 @@ export default function SideBar({currentUser, onLogout,}) {
 
                 {currentUser ? 
              <div> 
-             <Link to={'/login'}  className='flex fixed static items-bottom bottom-7 left-5 justify-center whitespace-pre duration-500'>
+             <Link to={'/'}  className='flex fixed static items-bottom bottom-7 left-5 justify-center whitespace-pre duration-500'>
                  <div>{React.createElement(BiLogOut, {size: '20'})}</div> 
                 <h2 
                  style={{
                      transitionDelay: `${0 + 6}00ms`,
                  }} 
-                 className={`whitespace-pre duration-500 ml-2 mb-1 ${!open && `opacity-0 translate-x-28 overflow-hidden`}`}>Logout</h2>
+                 onClick={handleLogout} className={`whitespace-pre duration-500 ml-2 mb-1 ${!open && `opacity-0 translate-x-28 overflow-hidden`}`}>Logout</h2>
              </Link>
          </div>
                 :  
@@ -82,7 +80,7 @@ export default function SideBar({currentUser, onLogout,}) {
                         style={{
                             transitionDelay: `${0 + 6}00ms`,
                         }} 
-                        className={`whitespace-pre duration-500 ml-2 mb-1  ${!open && `opacity-0 translate-x-28 overflow-hidden`}`}>Login</h2>
+                        className={`whitespace-pre duration-500 ml-2 mb-1 ${!open && `opacity-0 translate-x-28 overflow-hidden`}`}>Login</h2>
                     </Link>
                 </div>
                 }

@@ -35,7 +35,10 @@ function handleSubmit(e) {
   })
   fetch('/requests', configurationObject)
   .then((res) => res.json())
-  .then(data => setReq(data))
+  .then(data => {
+    console.log(data)
+    setReq(data)
+  })
 }
 
 // Handle delete
@@ -59,6 +62,7 @@ function handleDelete(cardId) {
       const renderReq = req.map((request) => {
         return (
         <MaintenanceCard
+        currentUser={currentUser}
         handleDelete={handleDelete}
         key={request.id}
         category={request.category}
@@ -71,16 +75,17 @@ function handleDelete(cardId) {
       })
 
   return (
-    <div class="absolute align-start ml-72 pl-10 py-10 w-10/12 pr-20">  
-    
-    <div className="min-h-full flex items-center justify-center px-4 sm:px-6 lg:px-8 mb-4">
-      <div class="max-w-md w-full bg-gray-300 p-8 text-center tracking-tight font-bold text-gray-900 space-y-8 mr-40">
-    <div class="max-w-md w-full bg-gray-300 p-8 text-center text-5xl tracking-tight font-bold text-gray-900 space-y-8 mr-40">Maintenance Inquiries</div>
-    <div src="https://png.clipart.me/istock/previews/5017/50178358-work-symbol-hand-wrench-drawing.jpg" alt="wrench"></div>
-    <div class="font-semibold">Chances are, at some point during your lease term, you’ll need to submit a maintenance request. We've created this page in order to submit requests for our maintenance team and other tenants in the building to review. If an issue has been resolved, please click "Mark as Completed" to remove from the board.</div>
+    <div class="absolute bg-gray-0 align-start ml-72 pl-10 py-10 w-10/12 pr-20">  
+    <div class="min-h-full flex items-center px-4 sm:px-6 lg:px-8 mb-4 ">
+      <div class="max-w w-full bg-white p-8 text-center tracking-tight font-bold text-gray-900 space-y-8 mr-40">
+        <div class="flex">
+    <div class=" max-w-md w-full p-4 text-center text-5xl tracking-tight font-bold text-gray-900 space-y-8 mr-10">Maintenance Inquiries</div>
+    <img class='mr-80'src="https://png.clipart.me/istock/previews/5017/50178358-work-symbol-hand-wrench-drawing.jpg" alt="wrench"></img>
     </div>
+    <div class="font-semibold">Chances are, at some point during your lease term, you’ll need to submit a maintenance request. We've created this page in order to submit requests for our maintenance team and other tenants in the building to review. If an issue has been resolved, please click "Mark as Completed" to remove from the board.</div>
     
-      <div className="max-w-md w-full bg-gray-300 p-8 space-y-8">
+    </div>
+      <div className="max-w-md w-full bg-white p-8 space-y-8">
         <div>
         <h2 className="text-center text-5xl tracking-tight font-bold text-gray-900">
             Maintenance Postings
@@ -96,12 +101,13 @@ function handleDelete(cardId) {
           <div class="inline-block relative w-64">
           <label
         for="comment"
-        class="text-sm font-medium mt-4 text-gray-900 light:text-gray-100"
+        class="text-sm font-medium mt-4 text-gray-900 light:text-gray-100 ml-1"
 
       >Location:</label>
   <select class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
    value={category}
    onChange={(e) => setCategory(e.target.value)}>
+     <option>Choose option</option>
     <option>Electrical and Lighting</option>
     <option>Parking</option>
     <option>Doors and Locks</option>
@@ -110,14 +116,14 @@ function handleDelete(cardId) {
     <option>Windows</option>
     <option>Patio and Outdoors</option>
   </select>
-  <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+  <div class="pointer-events-none absolute inset-y-0 right-0 mt-6 flex items-center px-2 text-gray-700">
     <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
   </div>
 </div>
             <div>
             <label
         for="comment"
-        class="text-sm font-medium mt-4 text-gray-900 light:text-gray-100"
+        class="text-sm font-medium mt-4 text-gray-900 light:text-gray-100 ml-1"
 
       >Comment:</label>
               <input
@@ -146,11 +152,14 @@ onChange={(e) => setComment(e.target.value)}
         </form>
       </div>
     </div>
-    <div class="bg-gray-300 p-8">
-    <h2 className="mt-6 text-center text-5xl tracking-tight font-bold text-gray-900">
+    <div class="relative flex mt-4 items-center"> 
+    <div class="flex-grow border-t border-gray-900 "></div>
+</div>
+    <div class="p-8">
+    <h2 className=" text-center py-4 text-5xl tracking-tight font-bold bg-white text-gray-900">
             Maintenance Board
           </h2>
-    <div class="grid grid-cols-3 gap-5 py-10 items-start">{renderReq}</div>
+    <div class="grid grid-cols-3 gap-5 py-10 items-start bg-white">{renderReq}</div>
     </div>
     </div>
 

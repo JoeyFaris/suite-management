@@ -9,7 +9,7 @@ export default function MyLease({currentUser}) {
     useEffect(() => {
         fetch(`/leases/${currentUser.leases[0].id}`)
         .then((res) => res.json())
-        .then((data) => console.log(data))
+        .then((data) => setLease(data))
     }, [])
 
 
@@ -28,7 +28,6 @@ function handleUpload() {
 
 function uploadAddendum(e) {
   e.preventDefault();
-  console.log(e)
   const formData = new FormData();
   formData.append('image', file);
 
@@ -39,6 +38,7 @@ function uploadAddendum(e) {
     .then((res) => res.json())
     .then(json => setImageUrl(`/${json.url}`));
 }
+console.log(imageUrl)
 
     return (
         <div class="absolute align-start ml-72 pl-20 py-20 w-10/12 pr-20 h-full bg-gray-200">
