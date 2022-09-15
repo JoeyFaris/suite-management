@@ -9,12 +9,14 @@ import Maintenance from "./components/Maintenance";
 import ContactPage from "./components/ContactPage";
 import MyLease from "./components/MyLease";
 import StripeContainer from "./components/StripeContainer";
-
+import MaintenanceCardsContainer from "./components/MaintenanceCardsContainer";
+import MyLease from "./components/MyLease";
 
 
 function App() {
   const [currentUser, setCurrentUser] = useState(false)
   const updateUser = (user) => setCurrentUser(user)
+
   const [user, setUser] = useState(null);
 
   console.log(user)
@@ -30,6 +32,17 @@ function App() {
   function onLogout() {
     setCurrentUser(!currentUser)
   }
+
+
+  // useEffect(() => {
+  //   fetch("/me").then((response) => {
+  //     if (response.ok) {
+  //       response.json().then((user) => setCurrentUser(user));
+  //     }
+  //   });
+  // }, []);
+
+
  
   return (
     <div>

@@ -1,10 +1,12 @@
 import React, {useState, useEffect} from "react";
 
+
 function PaymentPage({currentUser}) {
     const countries = ["China", "Russia", "UK"];
     const [menu, setMenu] = useState(false);
     const [country, setCountry] = useState("United States");
     const [expenses, setExpenses] = useState([])
+
 
     const changeText = (e) => {
         setMenu(false);
@@ -24,7 +26,7 @@ function PaymentPage({currentUser}) {
       
 
     return (
-//         
+
 
         <div className="flex ml-40 justify-center items-center">
             <div className="py-16 px-4 md:px-6 2xl:px-0 flex justify-center items-center 2xl:mx-auto 2xl:container">
@@ -122,7 +124,9 @@ function PaymentPage({currentUser}) {
 
                             <button className="mt-8 border border-transparent hover:border-gray-300 bg-gray-900 hover:bg-white text-white hover:text-gray-900 flex justify-center items-center py-4 rounded w-full">
                                 <div>
+
                                     <p className="text-base leading-4">Pay Outstanding Balance: ${finalTotal}</p>
+
                                 </div>
                             </button>
                         </div>

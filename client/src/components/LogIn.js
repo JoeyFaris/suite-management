@@ -12,6 +12,34 @@ function LogIn({updateUser}) {
     const [password, setPassword] = useState("")
 
 
+//     function handleSubmit(e){
+//         e.preventDefault();
+//         const userObj = {
+//             user: {
+//             username: username,
+//             email: email,
+//             password: password
+//             }
+//         }
+//         fetch('/login', {
+//           method: "POST",
+//           headers:{"Content-Type": "Application/json"},
+//           body:JSON.stringify(userObj)
+//         })
+//         .then(res => {
+//             if(res.ok) {
+//               res.json().then(user => {
+//                 updateUser({id: user.id, username: user.username})
+//                 navigate(`/`)
+//               })
+//             } else {
+//               res.json().then(json => setErrors(Object.entries(json.errors)))
+//             }
+//           })
+        
+   
+// }
+
 function handleSubmit(e) {
   e.preventDefault();
   fetch("/login", {
@@ -22,10 +50,16 @@ function handleSubmit(e) {
     body: JSON.stringify({ username }),
   })
     .then((r) => r.json())
+
     .then((user) => {
       updateUser(user) 
       navigate('/')});
 }
+
+    .then((user) => updateUser(user));
+    navigate('/')
+}
+
 
 
     return (
@@ -38,14 +72,17 @@ function handleSubmit(e) {
           flex items-center justify-center">
   
       <div class="w-full h-100">
+
       <div class="flex"> <BsBuilding size={60}/>
         <h1 class="flex text-3xl font-bold mt-7 ml-4"> Suite Management</h1>
         </div>
         <h1 class="text-xl md:text-2xl font-bold leading-tight mt-12">Log in to your account</h1>
+
   
         <form onSubmit={handleSubmit} class="mt-6" action="#" method="POST">
         {errors ? errors.map((e) => <div>{e}</div>) : null}
         <div>
+          
             <label class="block text-gray-700">Full Name</label>
             <input 
             type="username" 
@@ -64,7 +101,7 @@ function handleSubmit(e) {
             name="email" 
             id="email" 
             placeholder="Enter Email Address" 
-            class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none" autofocus autocomplete required
+            class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none" autoFocus autoComplete required
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             />
@@ -77,7 +114,7 @@ function handleSubmit(e) {
             name="" 
             id="password" 
             placeholder="Enter Password" 
-            minlength="6" 
+            minLength="6" 
             class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none" required
             value={password}
             onChange={(e) => setPassword(e.target.value)}
@@ -85,7 +122,7 @@ function handleSubmit(e) {
           </div>
   
           <div class="text-right mt-2">
-            <a href="#" class="text-sm font-semibold text-gray-700 hover:text-blue-700 focus:text-blue-700">Forgot Password?</a>
+            <a class="text-sm font-semibold text-gray-700 hover:text-blue-700 focus:text-blue-700">Forgot Password?</a>
           </div>
   
           <button type="submit" class="w-full block bg-blue-700 hover:bg-blue-400 focus:bg-blue-400 text-white font-semibold rounded-lg

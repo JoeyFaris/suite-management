@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+
 import { Link } from "react-router-dom";
 
 export default function MyLease({currentUser}) {
@@ -60,6 +61,7 @@ console.log(imageUrl)
         <div> { imageUrl ?
          <div class="mt-8 text-3xl lg:text-2xl font-italics leading-7 lg:leading-9 text-gray-800">Your PDF: <img class="mt-4"src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaNvcknbJ9tvblntXnB51-4l7byqplzXibTA&usqp=CAU" alt={imageUrl}/><a href={lease}  class="mt-4 inline-flex mr-20 items-center py-3 px-5 text-sm font-medium text-center text-gray-900 bg-white rounded-lg border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-700 dark:focus:ring-gray-700" download>Click to download</a></div>  : '' }</div>
         </div>
+
 </div>
     )
 }
