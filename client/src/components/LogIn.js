@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import {useNavigate} from 'react-router-dom'
+import { BsBuilding } from "react-icons/bs";
 
 
 function LogIn({updateUser}) {
@@ -37,8 +38,9 @@ function handleSubmit(e) {
           flex items-center justify-center">
   
       <div class="w-full h-100">
-  
-        <h1 class="text-xl font-bold">Suite Management Login</h1>
+      <div class="flex"> <BsBuilding size={60}/>
+        <h1 class="flex text-3xl font-bold mt-7 ml-4"> Suite Management</h1>
+        </div>
         <h1 class="text-xl md:text-2xl font-bold leading-tight mt-12">Log in to your account</h1>
   
         <form onSubmit={handleSubmit} class="mt-6" action="#" method="POST">

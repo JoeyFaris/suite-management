@@ -9,8 +9,6 @@ function MaintenanceCard({request, handleDelete, currentUser}) {
         setCompleted(!complete)
         handleDelete(request.id)
       }
-console.log(currentUser)
-console.log(request.user.username)
 
 
     return (

@@ -4,7 +4,7 @@ import { AiOutlineHome, AiOutlineFile} from 'react-icons/ai'
 import {BsCreditCard, BsHeadset, BsBuilding} from 'react-icons/bs'
 import { BiWrench, BiLogOut } from 'react-icons/bi'
 import {Link} from 'react-router-dom'
-import HomePage from "./HomePage"
+
 
 
 export default function SideBar({currentUser, onLogout}) {
@@ -17,8 +17,6 @@ export default function SideBar({currentUser, onLogout}) {
         {name: "Maintenance Requests", link:'/maintenance', icon: BiWrench},
         {name: "Contact Us", link:'/contactpage', icon: BsHeadset},
     ]
-
-
 
 
     function handleLogout() {
