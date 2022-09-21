@@ -11,6 +11,7 @@ function LogIn({updateUser}) {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
 
+
 //     function handleSubmit(e){
 //         e.preventDefault();
 //         const userObj = {
@@ -38,6 +39,7 @@ function LogIn({updateUser}) {
         
    
 // }
+
 function handleSubmit(e) {
   e.preventDefault();
   fetch("/login", {
@@ -48,6 +50,12 @@ function handleSubmit(e) {
     body: JSON.stringify({ username }),
   })
     .then((r) => r.json())
+
+    .then((user) => {
+      updateUser(user) 
+      navigate('/')});
+}
+
     .then((user) => updateUser(user));
     navigate('/')
 }
@@ -55,10 +63,7 @@ function handleSubmit(e) {
 
 
     return (
-
-        
         <section class="flex flex-col md:flex-row h-screen items-center">
-
     <div class="bg-gray-600 hidden lg:block w-full md:w-1/2 xl:w-2/3 h-screen">
       <img src="https://media.blogto.com/articles/20200311-25york.jpg?w=2048&cmd=resize_then_crop&height=1365&quality=70" alt="" class="w-full h-full object-cover p-1"/>
     </div>
@@ -67,8 +72,12 @@ function handleSubmit(e) {
           flex items-center justify-center">
   
       <div class="w-full h-100">
-        <h1 class="text-xl font-bold inline-flex md:text-3xl"><BsBuilding size={30}/>Suite Management Login</h1>
-        <h1 class="text-l md:text-xl font-bold leading-tight mt-12">Log in to your account</h1>
+
+      <div class="flex"> <BsBuilding size={60}/>
+        <h1 class="flex text-3xl font-bold mt-7 ml-4"> Suite Management</h1>
+        </div>
+        <h1 class="text-xl md:text-2xl font-bold leading-tight mt-12">Log in to your account</h1>
+
   
         <form onSubmit={handleSubmit} class="mt-6" action="#" method="POST">
         {errors ? errors.map((e) => <div>{e}</div>) : null}

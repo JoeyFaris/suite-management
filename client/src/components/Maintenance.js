@@ -1,66 +1,79 @@
-import React, { useEffect, useState } from "react";
+
+import React, {useState, useEffect} from "react";
 import { useNavigate } from "react-router";
+import MaintenanceCard from "./MaintenanceCard";
 
-function Maintenance() {
-    const [requests, setRequests] = useState([])
-    const [category, setCategory] = useState("")
-    const [comment, setComment] = useState("")
-    const {id} = requests
-    let navigate = useNavigate()
+function Maintenance({currentUser}) {
+const [category, setCategory] = useState("")
+const [comment, setComment] = useState("")
+const [req, setReq] = useState([])
 
-//GRABBING REQUESTS DATA FROM BACKEND
-    useEffect(() => {
-fetch("/requests")
-.then((r) => r.json())
-.then((data) => setRequests(data))
-    }, [])
-// DELETE BUTTON
-    function handleDelete() {
-        fetch(`/requests/${id}`, { method: 'DELETE' })
-        .then(() => console.log('Delete Successful'));
-    }
+ // Fetching initial backend data
+ 
+useEffect(() => {
+  fetch("/requests")
+  .then((r) => r.json())
+  .then((data) => setReq(data))
+      }, [])
 
-// HANDLE POST METHOD FOR FORM
+    
+  // Handle form submission
 
 function handleSubmit(e) {
-    e.preventDefault();
-    fetch("/requests", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          category: category,
-          comment: comment,          
-        }),
-      })
-      .then((res) => console.log(res)).then(navigate('/'))
+  e.preventDefault()
+  const form = {
+    category,
+    comment,
+    user_id: currentUser.id
+  }
 
-console.log('hello')
-};
+  const configurationObject = fetch('/requests', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(form)
+  })
+  fetch('/requests', configurationObject)
+  .then((res) => res.json())
+  .then(data => {
+    console.log(data)
+    setReq(data)
+  })
+}
+
+// Handle delete
+
+function handleDelete(cardId) {
+  fetch(`/requests/${cardId}`, {
+      method: 'DELETE'
+  })
+  fetch('/requests')
+  .then((res) => res.json())
+  .then((data) => {
+    console.log(data)
+    setTimeout(() => {
+      setReq(data)
+    }, '2000')
+  })
+ 
+}
 
 
-    const renderRequests = requests.map((request) => {
+      const renderReq = req.map((request) => {
         return (
-            <div class="flex justify-center">
-  <div class="block rounded-lg shadow-lg bg-white max-w-sm text-center">
-    <div class="p-6">
-      <h5 class="text-gray-900 text-xl font-medium mb-2">
-          Category: {request.category}</h5>
-      <p class="text-gray-700 text-base mb-4">
-        Comment: {request.comment}
-      </p>
-      <button href="#" class="inline-flex mr-10 items-center py-2 px-4 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Like Request</button>
-        <button href="#" class="inline-flex items-center py-2 px-4 text-sm font-medium text-center text-gray-900 bg-white rounded-lg border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-700 dark:focus:ring-gray-700" onClick={handleDelete} >Mark as Completed</button>
-       </div>
-    <div class="py-3 px-6 border-t border-gray-300 text-gray-600">
-      Posted by: {request.user.username}
-    </div>
-  </div>
-</div>
-        )
-    })
+        <MaintenanceCard
+        currentUser={currentUser}
+        handleDelete={handleDelete}
+        key={request.id}
+        category={request.category}
+        request={request}
 
+       
+        />
+        )
+
+      })
 
 
     
@@ -78,10 +91,77 @@ console.log('hello')
               go back to the home page
             </a>
           </p>
+
         </div>
         <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
           <input type="hidden" name="remember" defaultValue="true" />
           <div className="rounded-md shadow-sm -space-y-px">
+          <div class="inline-block relative w-64">
+          <label
+        for="comment"
+        class="text-sm font-medium mt-4 text-gray-900 light:text-gray-100 ml-1"
+
+      >Location:</label>
+  <select class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
+   value={category}
+   onChange={(e) => setCategory(e.target.value)}>
+     <option>Choose option</option>
+    <option>Electrical and Lighting</option>
+    <option>Parking</option>
+    <option>Doors and Locks</option>
+    <option>Elevator</option>
+    <option>Common Areas</option>
+    <option>Windows</option>
+    <option>Patio and Outdoors</option>
+  </select>
+  <div class="pointer-events-none absolute inset-y-0 right-0 mt-6 flex items-center px-2 text-gray-700">
+    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+  </div>
+</div>
+            <div>
+            <label
+        for="comment"
+        class="text-sm font-medium mt-4 text-gray-900 light:text-gray-100 ml-1"
+
+      >Comment:</label>
+              <input
+                id="comment"
+                name="comment"
+                type="comment"
+                className="appearance-none rounded-none h-20 relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                placeholder="Please provide more detail..."
+                value={comment}
+onChange={(e) => setComment(e.target.value)}
+               
+              />
+            </div>
+          </div>
+
+          <div>
+            <button
+              type="submit"
+              className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            >
+              <span className="absolute left-0 inset-y-0 flex items-center pl-3">
+              </span>
+              Submit
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="relative flex mt-4 items-center"> 
+    <div class="flex-grow border-t border-gray-900 "></div>
+</div>
+    <div class="p-8">
+    <h2 className=" text-center py-4 text-5xl tracking-tight font-bold bg-white text-gray-900">
+            Maintenance Board
+          </h2>
+    <div class="grid grid-cols-3 gap-5 py-10 items-start bg-white">{renderReq}</div>
+    </div>
+    </div>
+
+   
             <div>
               <label htmlFor="email-address" className="sr-only">
                 Title
@@ -166,7 +246,10 @@ onChange={(e) => setComment(e.target.value)}
 <div class="grid grid-cols-3 gap-5 py-10 items-start">{renderRequests}</div>
 </div>
   
+
   );
 }
 
 export default Maintenance;
+
+

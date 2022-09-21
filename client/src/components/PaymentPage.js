@@ -1,7 +1,8 @@
 import React, {useState, useEffect} from "react";
 
-function PaymentPage() {
-    const countries = ["United States", "Canada", "UK"];
+
+function PaymentPage({currentUser}) {
+    const countries = ["China", "Russia", "UK"];
     const [menu, setMenu] = useState(false);
     const [country, setCountry] = useState("United States");
     const [expenses, setExpenses] = useState([])
@@ -11,14 +12,17 @@ function PaymentPage() {
         setMenu(false);
         setCountry(e.target.textContent);
     };
+
+    console.log(currentUser)
     
       useEffect(() => {
-        fetch(`/leases/1`)
+        fetch(`/users/${currentUser.id}`)
           .then((r) => r.json())
-          .then((data) => setExpenses(data));
+          .then((data) => setExpenses(data.leases[0]));
       }, []);
 
       const total = expenses.base_rent + expenses.nnn_expenses + expenses.electric + expenses.gas
+    const finalTotal = total.toFixed(2)
       
 
     return (
@@ -33,24 +37,26 @@ function PaymentPage() {
                                
                             <p href='/' class="text-sm leading-none"></p>
                         </button>
-                        <p className="text-3xl lg:text-4xl font-semibold leading-7 lg:leading-9 text-gray-800">Make Payment</p>
+                        <p className="text-3xl lg:text-4xl font-italics leading-7 lg:leading-9 text-gray-800 font-serif">Make Payment</p>
                         
                     </div>
 
                     
-                        <div className="xl:w-3/5 flex flex-col sm:flex-row xl:flex-col justify-center items-center bg-gray-100 py-7 sm:py-0 xl:py-10 px-10 xl:w-full">
+                        <div className="xl:w-3/5 flex flex-col sm:flex-row xl:flex-col justify-center items-center ml-6 bg-gray-100 py-7 sm:py-0 xl:py-10 px-10 xl:w-full">
                             <div className="flex flex-col justify-start items-start w-full space-y-4">
-                                <p className="justify-center items-center text-xl md:text-2xl leading-normal text-gray-800">Current Balance for the month of: September 2022</p>
-                                <p className="text-base font-semibold leading-none text-gray-600">Base Rent: ${expenses.base_rent}</p>
-                                <p className="text-base font-semibold leading-none text-gray-600">NNN expenses: ${expenses.nnn_expenses}</p>
-                                <p className="text-base font-semibold leading-none text-gray-600">Electric: ${expenses.electric}</p>
-                                <p className="text-base font-semibold leading-none text-gray-600">Gas: ${expenses.gas}</p>
+                                <p className="justify-center items-center text-2xl md:text-3xl leading-normal text-gray-800 font-serif">Current Balance for the month of: September 2022</p>
+                               
+                                <p className="text-base font-semibold leading-none text-gray-600">1. Base Rent: ${expenses.base_rent}</p>
+                                <p className="text-base font-semibold leading-none text-gray-600">2. NNN expenses: ${expenses.nnn_expenses}</p>
+                                <p className="text-base font-semibold leading-none text-gray-600">3. Electric: ${expenses.electric}</p>
+                                <p className="text-base font-semibold leading-none text-gray-600">4.  Gas: ${expenses.gas}</p>
+                                
                             </div>
                             <div className="mt-1  xl:my-4 xl:px-20 w-52 sm:w-96 xl:w-auto">
                                
                             </div>
                         
-                            <div className="text-3xl">TOTAL = ${total}</div>
+                            <div className="text-3xl">TOTAL = ${finalTotal}</div>
                         <div className="p-8 bg-gray-100 flex flex-col lg:w-full xl:w-3/5">
                             
                             <button className="border border-transparent hover:border-gray-300 bg-gray-900 hover:bg-white text-white hover:text-gray-900 flex flex-row justify-center items-center space-x-2 py-4 rounded w-full">
@@ -118,7 +124,9 @@ function PaymentPage() {
 
                             <button className="mt-8 border border-transparent hover:border-gray-300 bg-gray-900 hover:bg-white text-white hover:text-gray-900 flex justify-center items-center py-4 rounded w-full">
                                 <div>
-                                    <p className="text-base leading-4">Pay Outstanding Balance: ${total}</p>
+
+                                    <p className="text-base leading-4">Pay Outstanding Balance: ${finalTotal}</p>
+
                                 </div>
                             </button>
                         </div>
